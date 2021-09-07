@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'public/homes#top'
   
+  scope module: :public do
+    resource :users, only: [:show] 
+  end
+  
+  
+  
   
   devise_scope :user do
     get '/company/new' => 'users/registrations#company' ,as: :new_company
