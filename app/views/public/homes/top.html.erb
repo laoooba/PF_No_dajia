@@ -2,7 +2,9 @@
   <div class="row">
     <p class="heder-text">台湾留学に来ている日本人のための情報共有サイト</p>
     <%= link_to 'ログイン', new_user_session_path %>
+    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
     <%= link_to '新規登録', new_user_registration_path %>
+    
   </div>
 </div>
 
