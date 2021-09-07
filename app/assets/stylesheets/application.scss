@@ -20,6 +20,19 @@
 
 // -----------------------------------------------------
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+
 .heder{
   display: flex;
   flex-wrap: wrap;
@@ -58,3 +71,4 @@ li{
 
 
 // -------------------------------------------------------
+

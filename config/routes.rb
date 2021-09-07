@@ -28,4 +28,5 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords'
   }
  
+  
 end
