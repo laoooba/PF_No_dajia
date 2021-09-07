@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  has_one_attached :image
+  
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   
   enum status: { 学生: 0, 企業: 1 }

@@ -13,7 +13,7 @@
 
   <body>
     <%# if user_signed_in? %>
-    <div class="container__heder">
+    <div class="container">
       <div class="heder">
         <h1>だげほー</h1>
         <div class="heder_menu">
@@ -32,8 +32,10 @@
     <%# end %>
     <%= yield %>
     <footer　class="bg-white shadow text-center text-lg-start">
-      <div class="fixed-bottom text-center p-3 bg-light">
-        だげほー
+      <div class="container">
+        <div class="bottom text-center p-3 bg-light">
+          だげほー
+        </div>
       </div>
     </footer>
   </body>
