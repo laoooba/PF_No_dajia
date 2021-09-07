@@ -31,6 +31,19 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   
+   <%= f.fields_for :student_user do |student| %>
+    <div class="field">
+      <%= student.label "学校名" %><br />
+      <%= student.text_field :school_name, autocomplete: "off" %>
+    </div>
+
+     <div class="field">
+      <%= student.label "学科名" %><br />
+      <%= student.text_field :major, autocomplete: "off" %>
+    </div>
+    <% end %>
+
+  
 
 
   <div class="actions">

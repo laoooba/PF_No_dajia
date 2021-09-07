@@ -166,8 +166,6 @@ ActiveRecord::Schema.define(version: 2021_09_07_080547) do
     t.datetime "remember_created_at"
     t.string "name", limit: 15, null: false
     t.string "description", null: false
-    t.string "image_id"
-    t.integer "status", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
