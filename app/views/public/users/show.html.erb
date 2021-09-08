@@ -58,7 +58,14 @@
         </table>
       <% end %>
       <% if @user == current_user %>
-      <div><%= link_to "編集", edit_user_path(@user), class:"btn btn-lg btn-outline-primary" %></div>
+      <table class="table">
+          <tbody>
+            <tr>
+              <td><%= link_to "編集", edit_user_path(@user), class:"btn btn-lg btn-outline-primary" %></td>
+              <td><%= link_to "退会", unsubscribe_user_path(@user), class:"btn btn-lg btn-outline-danger" %></td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
     </div>
   </div>

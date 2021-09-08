@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
 
   scope module: :public do
-    resources :users, only: [:show, :edit, :update]
+    resources :users, only: [:show, :edit, :update] do
+      member do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end 
+    end 
+    
   end
 
 
