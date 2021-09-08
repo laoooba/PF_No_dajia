@@ -42,6 +42,7 @@
       <table class="table">
         <tbody>
           <tr>
+            <td><%= render 'public/favorites/form', post: @post %></td>
             <td><%= render 'public/comments/index', post: @post %></td>
             <td><%= render 'public/comments/form', post: @post, comment: @comment %></rd>
           </tr>

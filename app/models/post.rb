@@ -17,17 +17,17 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
-    
+  end
   
    # ---------- いいね---------
   # ---------- アソシエーション---------
 
 private
 
-def image_type
-  if !image.blob.content_type.in?(%('image/jpeg image/png'))
-    image.purge
-    errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+  def image_type
+    if !image.blob.content_type.in?(%('image/jpeg image/png'))
+      image.purge
+      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+    end
   end
-end
 end
