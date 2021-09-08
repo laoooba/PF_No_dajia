@@ -1,0 +1,9 @@
+<% post.comments.each do |comment| %>
+  <%= image_tag 'no_image.jpg' %>
+  <%= comment.comment %>
+  <% if comment.user == current_user %>
+  <%= link_to "destroy", post_comment_path(post_id: comment.post, id: comment), method: :delete, remote: true,  class:"btn btn-danger" %><br>
+  <% else %>
+  <br>
+  <% end %>
+<% end %>
