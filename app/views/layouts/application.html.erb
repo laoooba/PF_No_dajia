@@ -19,12 +19,13 @@
         <div class="heder_menu">
           <nav>
             <ul>
+              <li class="nav-item"><%= current_user.name %></li>
               <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "新規投稿", root_path, class:"nav-link" %></li>
+              <li class="nav-item"><%= link_to "新規投稿", new_post_path, class:"nav-link" %></li>
               <li class="nav-item"><%= link_to "投稿記事一覧", root_path, class:"nav-link" %></li>
               <li class="nav-item"><%= link_to "DM一覧", root_path, class:"nav-link" %></li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %></li>
-              
+
             </ul>
           </nav>
         </div>
@@ -32,11 +33,9 @@
     </div>
     <% end %>
     <%= yield %>
-    <footer　class="bg-white shadow text-center text-lg-start">
-      <div class="container">
-        <div class="bottom text-center p-3 bg-light">
-          だげほー
-        </div>
+    <footer>
+      <div class="bottom text-center p-3 bg-light">
+        だげほー
       </div>
     </footer>
   </body>

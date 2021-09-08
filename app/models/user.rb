@@ -8,10 +8,19 @@ class User < ApplicationRecord
   
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   
-  
+# ---------- ユーザーテーブルにネスト--------- 
   has_one :company_user, inverse_of: :user
   accepts_nested_attributes_for :company_user, update_only: true
   
   has_one :student_user, inverse_of: :user
   accepts_nested_attributes_for :student_user, update_only: true
+  # ---------- ユーザーテーブルにネスト--------- 
+  
+  # ---------- アソシエーション--------- 
+  has_many :books, dependent: :destroy
+  
+  # ---------- アソシエーション--------- 
+  
+  
+  
 end

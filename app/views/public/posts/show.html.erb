@@ -1,0 +1,44 @@
+<div class="container mx-auto" style="width: 200px;">
+  <div class="row">
+    <h1><strong>お悩み</strong></h1>
+  </div>
+</div>
+<div class="container mx-auto">
+  <div class="row mx-auto px-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= image_tag @post.image.variant(resize:'300x300') %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="px-auto">タイトル</th>
+            <td><%= @post.title %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>本文</th>
+            <td><%= @post.body %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @user == current_user %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= link_to '編集', edit_post_path(@post.id), class:"btn btn-success" %></td>
+            <td><%= link_to '削除', post_path(@post.id), method: :delete, class:"btn btn-danger" %></rd>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
