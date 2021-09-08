@@ -10,8 +10,8 @@ class User < ApplicationRecord
   
   
   has_one :company_user, inverse_of: :user
-  accepts_nested_attributes_for :company_user
+  accepts_nested_attributes_for :company_user, update_only: true
   
   has_one :student_user, inverse_of: :user
-  accepts_nested_attributes_for :student_user
+  accepts_nested_attributes_for :student_user, update_only: true
 end
