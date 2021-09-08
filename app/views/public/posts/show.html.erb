@@ -42,9 +42,9 @@
       <table class="table">
         <tbody>
           <tr>
-            <td><%= render 'public/favorites/form', post: @post %></td>
-            <td><%= render 'public/comments/index', post: @post %></td>
-            <td><%= render 'public/comments/form', post: @post, comment: @comment %></rd>
+            <td class="favorite-btn_<%= @post.id %>"><%= render 'public/favorites/form', post: @post %></td>
+            <td class="comment"><%= render 'public/comments/index', post: @post %></td>
+            <td class="new-comment"><%= render 'public/comments/form', post: @post, comment: @comment %></rd>
           </tr>
         </tbody>
       </table>
