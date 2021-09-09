@@ -14,6 +14,13 @@
         <tbody>
           <tr>
             <th class="">名前</th>
+            <td>
+              <% if @user.profile_image.attached? %>
+              <%= image_tag @user.profile_image.variant(resize:'300x300') %>
+              <% else %>
+              <%= image_tag 'no_image.jpg' %>
+              <% end %>
+            </td>
             <td><%= @user.name %></td>
           </tr>
         </tbody>
@@ -23,6 +30,21 @@
           <tr>
             <th>紹介文</th>
             <td><%= @user.description %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>フォロー</th>
+            <td><%= link_to user_followings_path(@user) do %>
+              フォロー数: <%= @user.followings.count %>
+              <% end %>
+            </td>
+            <td><%= link_to user_followers_path(@user) do %>
+              フォロワー数: <%= @user.followers.count %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
