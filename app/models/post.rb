@@ -5,8 +5,6 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 30}
   validates :body, presence: true
 
-  # validate :image_type
-
 
   # ---------- アソシエーション---------
   has_many :comments, dependent: :destroy
@@ -22,12 +20,4 @@ class Post < ApplicationRecord
    # ---------- いいね---------
   # ---------- アソシエーション---------
 
-private
-
-  # def image_type
-  #   if !image.blob.content_type.in?(%('image/jpeg image/png'))
-  #     image.purge
-  #     errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
-  #   end
-  # end
 end

@@ -3,7 +3,11 @@
     <div class="card mb-4 shadow-sm">
       <div class="bd-placeholder-img card-img-top">
         <%= link_to post_path(post) do %>
+          <% if post.image.attached? %>
           <%= image_tag post.image.variant(resize:'300x300') %>
+          <% else %>
+          <%= image_tag 'heder.png', size: '300x200'%>
+          <% end %>
         <% end %>
       </div>
       <div class="card-body">
@@ -14,3 +18,4 @@
     </div>
   </div>
 <% end %>
+<%= paginate @posts %>
