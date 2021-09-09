@@ -1,6 +1,10 @@
-<div class="container mx-auto" style="width: 200px;">
+<div class="container mx-auto" style="width: 650px;">
   <div class="row">
+    <% if @user == current_user %>
     <h1><strong>マイページ</strong></h1>
+    <% else %>
+    <h1><strong><%= @user.name %>さんのマイページ</strong></h1>
+    <% end %>
   </div>
 </div>
 <div class="container mx-auto">
@@ -67,6 +71,40 @@
           </tbody>
         </table>
       <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mx-auto">
+  <div class="row mx-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <h1><strong>お悩み</strong></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><% if post.image.attached? %>
+                <%= image_tag post.image.variant(resize:'100x100') %>
+                <% else %>
+                <%= image_tag 'no_image.jpg' %>
+                <% end %>
+            </td>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
