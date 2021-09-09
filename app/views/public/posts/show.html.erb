@@ -9,13 +9,12 @@
       <table class="table">
         <tbody>
           <tr>
-            <td>
-              <% if @post.image.attached? %>
-              <%= image_tag @post.image.variant(resize:'300x300') %>
-              <% else %>
-              <%= image_tag 'no_image.jpg' %>
-              <% end %>
-              </td>
+            <td><% if @post.image.attached? %>
+                <%= image_tag @post.image.variant(resize:'300x300') %>
+                <% else %>
+                <%= image_tag 'no_image.jpg' %>
+                <% end %>
+            </td>
           </tr>
         </tbody>
       </table>

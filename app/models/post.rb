@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
 
-
   # ---------- アソシエーション---------
   has_many :comments, dependent: :destroy
   
