@@ -1,16 +1,16 @@
 class Public::RelationshipsController < ApplicationController
-  
+
   def create
     current_user.follow(params[:user_id])
     redirect_to request.referer
-  end 
-  
+  end
+
   def destroy
     current_user.unfollow(params[:user_id])
     redirect_back(fallback_location: root_path)
-  end 
-  
-   def followings
+  end
+
+  def followings
     user = User.find(params[:user_id])
     @users = user.followings
   end
@@ -19,5 +19,5 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
-  
+
 end

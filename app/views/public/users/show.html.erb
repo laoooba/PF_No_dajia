@@ -1,6 +1,10 @@
-<div class="container mx-auto" style="width: 200px;">
+<div class="container mx-auto" style="width: 650px;">
   <div class="row">
+    <% if @user == current_user %>
     <h1><strong>マイページ</strong></h1>
+    <% else %>
+    <h1><strong><%= @user.name %>さんのマイページ</strong></h1>
+    <% end %>
   </div>
 </div>
 <div class="container mx-auto">
@@ -10,6 +14,13 @@
         <tbody>
           <tr>
             <th class="">名前</th>
+            <td>
+              <% if @user.profile_image.attached? %>
+              <%= image_tag @user.profile_image.variant(resize:'300x300') %>
+              <% else %>
+              <%= image_tag 'no_image.jpg' %>
+              <% end %>
+            </td>
             <td><%= @user.name %></td>
           </tr>
         </tbody>
@@ -19,6 +30,21 @@
           <tr>
             <th>紹介文</th>
             <td><%= @user.description %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>フォロー</th>
+            <td><%= link_to user_followings_path(@user) do %>
+              フォロー数: <%= @user.followings.count %>
+              <% end %>
+            </td>
+            <td><%= link_to user_followers_path(@user) do %>
+              フォロワー数: <%= @user.followers.count %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -56,6 +82,13 @@
             </tr>
           </tbody>
         </table>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= render 'public/relationships/follow-btn', user: @user %></td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
       <% if @user == current_user %>
       <table class="table">
@@ -67,6 +100,40 @@
           </tbody>
         </table>
       <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mx-auto">
+  <div class="row mx-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <h1><strong>お悩み</strong></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>name</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><% if post.image.attached? %>
+                <%= image_tag post.image.variant(resize:'100x100') %>
+                <% else %>
+                <%= image_tag 'no_image.jpg' %>
+                <% end %>
+            </td>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
