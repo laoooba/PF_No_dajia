@@ -60,6 +60,13 @@
             </tr>
           </tbody>
         </table>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= render 'public/relationships/follow-btn', user: @user %></td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
       <% if @user == current_user %>
       <table class="table">
