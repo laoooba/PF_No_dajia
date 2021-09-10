@@ -48,6 +48,18 @@
       <table class="table">
         <tbody>
           <tr>
+            <th>タグ</th>
+            <% @post.tags.each do |t| %>
+            <td>
+              <%= t.title%>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
             <th>本文</th>
             <td><%= @post.body %></td>
           </tr>
