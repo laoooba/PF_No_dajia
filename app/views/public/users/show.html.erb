@@ -82,14 +82,15 @@
             </tr>
           </tbody>
         </table>
+        <% end %>
         <table class="table">
           <tbody>
             <tr>
               <td><%= render 'public/relationships/follow-btn', user: @user %></td>
+              <td><%= render 'public/rooms/dm-btn', user: @user, isRoom: @isRoom, roomID: @roomID, room: @room, entry: @entry %></td>
             </tr>
           </tbody>
         </table>
-      <% end %>
       <% if @user == current_user %>
       <table class="table">
           <tbody>

@@ -17,11 +17,17 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    
+    # -------------DM機能------------
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create,:show]
+     # -------------DM機能------------
     resources :users, only: [:show, :edit, :update, :index] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
+        get 'dms'
         get 'unsubscribe'
         patch 'withdraw'
       end 
