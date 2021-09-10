@@ -36,6 +36,13 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   # ---------- follow機能---------
+  
+  # ---------- DM機能---------
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries, source: :room
+
+  # ---------- DM機能---------
   # ---------- アソシエーション---------
 
 

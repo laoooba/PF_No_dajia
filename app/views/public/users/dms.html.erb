@@ -1,0 +1,31 @@
+<% if current_user.id == @user.id %>
+  <% @rooms.each do |room| %>
+    <% room.users.each do |user| %>
+    <% unless user.id == current_user.id %>
+    <div class="col-md-4" style="float:left">
+      <div class="card mb-3 shadow-sm">
+        <div class="bd-placeholder-img card-img-top">
+          <%= link_to room_path(room) do %>
+            <% if user.profile_image.attached? %>
+              <%= image_tag user.profile_image.variant(resize:'300x300') %>
+              <% else %>
+              <%= image_tag 'no_image.jpg' %>
+              <% end %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to room_path(room) do %>
+            <%= user.name %>さん
+            <% end %>
+          </h5>
+          <p class="card-text">一言<%= user.description %></p>
+        </div>
+      </div>
+    </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+<% end %>
+
