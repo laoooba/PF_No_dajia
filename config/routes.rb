@@ -43,6 +43,10 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions',
     passwords: 'admins/passwords'
   }
+  
+   namespace :admin do
+    resources :genres, only:[:index, :create, :edit, :update]
+  end
 
 
 end

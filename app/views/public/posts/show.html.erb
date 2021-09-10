@@ -32,8 +32,16 @@
       <table class="table">
         <tbody>
           <tr>
-            <th class="px-auto">タイトル</th>
+            <th>タイトル</th>
             <td><%= @post.title %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>地域</th>
+            <td><%= @post.genre.title %></td>
           </tr>
         </tbody>
       </table>
