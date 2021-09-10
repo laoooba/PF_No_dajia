@@ -4,6 +4,8 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @genres = Genre.all
+    @tags = Tag.all
+    @post.tag_maps.build
   end
 
   def create
@@ -16,21 +18,25 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
-  
-  def index 
+
+  def index
     @posts = Post.page(params[:page]).per(2)
   end
+  
+  
   def show
     @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
   end
-  
-  def edit 
+
+  def edit
     @post = Post.find(params[:id])
-     @genres = Genre.all
-  end
+    @genres = Genre.all
+    @tags = Tag.all
   
+  end
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -40,7 +46,7 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -50,6 +56,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :user_id, :genre_id)
+    params.require(:post).permit(:title, :body, :image, :user_id, :genre_id, { tag_ids: [] }).merge(user_id: current_user.id)
   end
 end
