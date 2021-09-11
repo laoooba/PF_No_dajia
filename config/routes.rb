@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'public/homes#top'
-  
+
    devise_for :users, :controllers => {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    
+
     # -------------DM機能------------
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
@@ -30,9 +30,9 @@ Rails.application.routes.draw do
         get 'dms'
         get 'unsubscribe'
         patch 'withdraw'
-      end 
-    end 
-    
+      end
+    end
+
   end
 
 
@@ -43,10 +43,11 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions',
     passwords: 'admins/passwords'
   }
-  
+
    namespace :admin do
     resources :genres, only:[:index, :create, :edit, :update]
     resources :tags, only:[:index, :create, :edit, :update]
+    resources :users, only:[:index, :edit, :update]
   end
 
 
