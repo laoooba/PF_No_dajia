@@ -49,9 +49,9 @@
         <tbody>
           <tr>
             <th>タグ</th>
-            <% @post.tags.each do |t| %>
+            <% @post.tags.each do |tag| %>
             <td>
-              <%= t.title%>
+              <span class= 'badge badge-primary'><%= tag.title %></span>
             </td>
             <% end %>
           </tr>
