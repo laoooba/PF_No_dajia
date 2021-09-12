@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>新規投稿</h1>
+      <h1>投稿編集</h1>
       <%= form_with model:@post, local:true do |f| %>
       <%= render 'layouts/error_messages', model: @post %>
       <div class="form-group">
-        <label for="inputTitle">タイトル</label>
+        <label for="inputTitle">タイトル</label><%= @post.status %>
         <%= f.text_field :title, autofocus: true, placeholder:"タイトル", class:"form-control" %>
       </div>
       <div class="form-group">
@@ -22,11 +22,18 @@
         <label for="inputImage">画像</label>
         	<%= f.file_field :image, class:"form-control" %>
       </div>
-      
+
       <div class="form-group">
         <label for="inputBody">本文</label>
         <%= f.text_area :body, placeholder:"サイコー", class:"form-control" %>
       </div>
+      <% unless @post.status == "有効" %>
+      <div class="form-group">
+        <label for="inputStatusContent">お問い合わせ</label>
+        <%= f.text_area :status_content, placeholder:"疑問点などがありましたらお書きください", class:"form-control" %>
+      </div>
+      <% end %>
+
       <div class="form-group">
         <%= f.submit "だげほー", class:"btn btn-success" %>
       </div>

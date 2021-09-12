@@ -11,6 +11,7 @@
           <tr>
             <th>ステータス</th>
             <td><%= @post.status %></td>
+            <td><%= link_to '編集', edit_admin_post_path(@post.id), class:"btn btn-success" %></td>
           </tr>
         </tbody>
       </table>
@@ -52,7 +53,6 @@
           <tr>
             <th>タイトル</th>
             <td><%= @post.title %></td>
-            <td><%= @post.status %></td>
           </tr>
         </tbody>
       </table>
@@ -81,25 +81,6 @@
           <tr>
             <th>本文</th>
             <td><%= @post.body %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% if @user == current_user %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><%= link_to '編集', edit_post_path(@post.id), class:"btn btn-success" %></td>
-            <td><%= link_to '削除', post_path(@post.id), method: :delete, class:"btn btn-danger" %></rd>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="favorite-btn_<%= @post.id %>"><%= render 'public/favorites/form', post: @post %></td>
-            <td class="comment"><%= render 'public/comments/index', post: @post %></td>
-            <td class="new-comment"><%= render 'public/comments/form', post: @post, comment: @comment %></rd>
           </tr>
         </tbody>
       </table>

@@ -1,4 +1,5 @@
 <% @posts.each do |post| %>
+<% if post.status == "有効" %>
   <div class="col-md-3" style="float:left">
     <div class="card mb-4 shadow-sm">
       <div class="bd-placeholder-img card-img-top">
@@ -18,4 +19,6 @@
     </div>
   </div>
 <% end %>
+<% end %>
 <%= paginate @posts %>
+

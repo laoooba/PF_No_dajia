@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(2)
+    @posts = Post.page(params[:page]).per(8)
   end
 
 
@@ -34,12 +34,23 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      flash[:notice]="だげほー"
-      redirect_to post_path(@post)
+    if @post.status == "編集待ち" 
+      @post.status = "結果待ち"
+      if @post.update(post_params)
+        flash[:notice]="だげほー"
+        redirect_to post_path(@post)
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @post.update(post_params)
+        flash[:notice]="だげほー"
+        redirect_to post_path(@post)
+      else
+        render :edit
+      end
     end
+    
   end
 
   def destroy
@@ -47,10 +58,11 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+  
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :user_id, :genre_id, { tag_ids: [] })
+    params.require(:post).permit(:title, :body, :image, :status, :status_content, :user_id, :genre_id, { tag_ids: [] })
   end
 end
