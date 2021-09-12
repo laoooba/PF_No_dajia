@@ -48,7 +48,11 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :create, :edit, :update]
     resources :tags, only:[:index, :create, :edit, :update]
     resources :users, only:[:index, :edit, :update]
-    resources :posts, only:[:index, :show, :edit, :update]
+    resources :posts, only:[:index, :show, :edit, :update] do
+       collection do
+        get 'wait_edit'
+      end
+    end
   end
 
 

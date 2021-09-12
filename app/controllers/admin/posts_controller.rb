@@ -20,6 +20,10 @@ class Admin::PostsController < ApplicationController
     @post.update(post_params)
     redirect_to admin_post_path(@post)
   end
+  
+  def wait_edit
+    @posts = Post.all
+  end
 
   private
   def post_params
