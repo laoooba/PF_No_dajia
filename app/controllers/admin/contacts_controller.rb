@@ -11,8 +11,12 @@ class Admin::ContactsController < ApplicationController
   
   def update 
     @contact = Contact.find(params[:id])
-    @contact.update(contact_params)
-    redirect_to admin_contacts_path
+    if @contact.update(contact_params)
+      ContactMailer.send_user_reply(@contact).deliver_now
+      redirect_to admin_contacts_path
+    else
+      render :edit
+    end
   end 
   
   private
