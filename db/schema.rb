@@ -62,10 +62,11 @@ ActiveRecord::Schema.define(version: 2021_09_07_080547) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name", null: false
-    t.string "subject", null: false
+    t.string "email", null: false
+    t.string "title", null: false
     t.text "body", null: false
+    t.text "replay_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
