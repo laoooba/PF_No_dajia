@@ -39,7 +39,7 @@
           </tr>
         </tbody>
       </table>
-      <%= form_with model:@contact, url: admin_contact_path, local:true do |f| %>
+      <%= form_with model:@contact, url: admin_contact_path,  local:true do |f| %>
       <div class="form-group">
         <label for="inputStatusContent">お問い合わせ</label>
         <%= f.text_area :replay_text, placeholder:"お問い合わせの返答をお書きください", class:"form-control" %>
