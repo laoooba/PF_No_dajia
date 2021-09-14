@@ -10,13 +10,15 @@
         <tbody>
           <tr>
             <th>名前</th>
-            <td>
-              <% if user_signed_in? %>
-              <%= @user.name %>
-              <% else %>
-              <%= @contact.name %>
-              <% end %>
-              </td>
+            <td><%= @contact.name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @contact.email %></td>
           </tr>
         </tbody>
       </table>
@@ -24,7 +26,7 @@
         <tbody>
           <tr>
             <th>タイトル</th>
-            <td><%= @contact.subject %></td>
+            <td><%= @contact.title %></td>
           </tr>
         </tbody>
       </table>

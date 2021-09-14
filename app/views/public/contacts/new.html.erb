@@ -8,10 +8,15 @@
         <label for="inputName">名前</label>
         <%= f.text_field :name, autofocus: true, placeholder:"名前", class:"form-control" %>
       </div>
+      
+      <div class="form-group">
+        <label for="inputEmail">メールアドレス</label>
+        <%= f.text_field :email, autofocus: true, placeholder:"exmple@gmail.com", class:"form-control" %>
+      </div>
 
       <div class="form-group">
-        <label for="inputSubject">タイトル</label>
-        	<%= f.text_field :subject, placeholder:"タイトルをお書きください",  class:"form-control" %>
+        <label for="inputTitle">タイトル</label>
+        	<%= f.text_field :title, placeholder:"タイトルをお書きください",  class:"form-control" %>
       </div>
 
       <div class="form-group">

@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_080547) do
     t.string "email", null: false
     t.string "title", null: false
     t.text "body", null: false
+    t.text "replay_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
