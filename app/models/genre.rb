@@ -1,4 +1,4 @@
 class Genre < ApplicationRecord
-  has_many :osts, dependent: :destroy
+  has_many :posts, dependent: :destroy
   validates :title, presence: true
 end
