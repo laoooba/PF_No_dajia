@@ -50,3 +50,10 @@
     </div>
   </div>
 </div>
+<% @genres.each do |genre| %>
+<%= link_to genre.title, genre_path(genre) %>
+<% end %>
+
+<% @tags.each do |tag| %>
+<%= link_to tag.title, tag_path(tag) %>
+<% end %>

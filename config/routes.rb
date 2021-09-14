@@ -39,6 +39,11 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'search' => 'searches#search'
+    resources :genres, only: [:show]
+    resources :tags, only: [:show]
+    
+
   end
 
 

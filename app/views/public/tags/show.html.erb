@@ -1,0 +1,25 @@
+<h1><%= @tag.title %></h1>
+
+<% @posts.each do |post| %>
+<% if post.status == "有効" %>
+  <div class="col-md-3" style="float:left">
+    <div class="card mb-4 shadow-sm">
+      <div class="bd-placeholder-img card-img-top">
+        <%= link_to post_path(post) do %>
+          <% if post.image.attached? %>
+          <%= image_tag post.image.variant(resize:'300x300') %>
+          <% else %>
+          <%= image_tag 'heder.png', size: '300x200'%>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p><%= post.body %></p>
+        <%= link_to "詳細", post_path(post), class: "btn btn-outline-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% end %>
+<%= paginate @posts %>
