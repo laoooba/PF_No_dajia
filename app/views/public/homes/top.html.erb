@@ -55,5 +55,5 @@
 <% end %>
 
 <% @tags.each do |tag| %>
-<%= link_to tag.title, tag_path(tag) %>
+<span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
 <% end %>
