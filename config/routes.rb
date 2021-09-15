@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:show]
     resources :tags, only: [:show]
     
+    resources :notifications, only: [:index]
+    
 
   end
 
