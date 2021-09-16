@@ -1,0 +1,38 @@
+<% if posts.exists? %>
+<% @posts.each do |post| %>
+<% unless post.status == "有効" %>
+<div class="container mx-auto">
+  <div class="row mx-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <h1><strong>編集待ち</strong></h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>エリア</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><% if post.image.attached? %>
+                <%= image_tag post.image.variant(resize:'100x100') %>
+                <% else %>
+                <%= image_tag 'no_image.jpg' %>
+                <% end %>
+            </td>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><%= post.genre.title %></td>
+            <td><%= post.status %></td>
+            <td><%= link_to '編集', edit_post_path(post.id), class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+<% end %>

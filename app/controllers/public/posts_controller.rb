@@ -4,6 +4,11 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @post.tag_maps.new
+    if current_user.student_user
+      @genres = Genre.where.not(id: 1)
+    else
+      @genres = Genre.all
+    end
   end
 
   def create
@@ -13,6 +18,11 @@ class Public::PostsController < ApplicationController
       flash[:notice] ="だげほー"
       redirect_to post_path(@post)
     else
+    if current_user.student_user
+      @genres = Genre.where.not(id: 1)
+    else
+      @genres = Genre.all
+    end
       render :new
     end
   end
@@ -34,7 +44,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.status == "編集待ち" 
+    if @post.status == "編集待ち"
       @post.status = "結果待ち"
       if @post.update(post_params)
         flash[:notice]="だげほー"
@@ -50,7 +60,7 @@ class Public::PostsController < ApplicationController
         render :edit
       end
     end
-    
+
   end
 
   def destroy
@@ -58,7 +68,7 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
+
 
   private
 
