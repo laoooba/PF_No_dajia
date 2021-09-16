@@ -1,4 +1,5 @@
 <% if current_user.id == @user.id %>
+<% if @rooms.exists? %>
   <% @rooms.each do |room| %>
     <% room.users.each do |user| %>
     <% unless user.id == current_user.id %>
@@ -19,13 +20,15 @@
             <%= user.name %>さん
             <% end %>
           </h5>
-          <p class="card-text">一言<%= user.description %></p>
+          <p class="card-text"><%= room.messages.last.content.truncate(30) %></p>
         </div>
       </div>
     </div>
       <% end %>
     <% end %>
   <% end %>
-<% else %>
+  <% else %>
+  <h1>履歴がありません</h1>
+  <% end %>
 <% end %>
 

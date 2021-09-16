@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= post.title %></h5>
-        <p><%= post.body %></p>
+        <p><%= post.body.truncate(30) %></p>
         <%= link_to "詳細", post_path(post), class: "btn btn-outline-success" %>
       </div>
     </div>
