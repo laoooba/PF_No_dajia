@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.post_id = @post.id
     @comment.save
+    @post.create_notification_comment(current_user, @comment.id)
     render :index
   end 
   
