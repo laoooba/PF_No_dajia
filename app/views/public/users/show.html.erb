@@ -83,6 +83,7 @@
           </tbody>
         </table>
         <% end %>
+         <% unless @user == current_user %>
         <table class="table">
           <tbody>
             <tr>
@@ -91,7 +92,7 @@
             </tr>
           </tbody>
         </table>
-      <% if @user == current_user %>
+      <% else %>
       <table class="table">
           <tbody>
             <tr>
@@ -104,74 +105,6 @@
     </div>
   </div>
 </div>
-
-
-
-<div class="container mx-auto">
-  <div class="row mx-auto">
-    <div class="col-10 mx-auto shadow-sm rounded">
-      <h1><strong>お悩み</strong></h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>name</th>
-            <th>ステータス</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-          <% if post.status == "有効" %>
-          <tr>
-            <td><% if post.image.attached? %>
-                <%= image_tag post.image.variant(resize:'100x100') %>
-                <% else %>
-                <%= image_tag 'no_image.jpg' %>
-                <% end %>
-            </td>
-            <td><%= link_to post.title, post_path(post) %></td>
-            <td><%= post.body %></td>
-            <td><%= post.status %></td>
-          </tr>
-          <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row mx-auto">
-    <div class="col-10 mx-auto shadow-sm rounded">
-      <h1><strong>編集待ち</strong></h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>name</th>
-            <th>ステータス</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-          <% unless post.status == "有効" %>
-          <tr>
-            <td><% if post.image.attached? %>
-                <%= image_tag post.image.variant(resize:'100x100') %>
-                <% else %>
-                <%= image_tag 'no_image.jpg' %>
-                <% end %>
-            </td>
-            <td><%= link_to post.title, post_path(post) %></td>
-            <td><%= post.body %></td>
-            <td><%= post.status %></td>
-          </tr>
-          <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<%= render 'public/users/edit_post', posts: @posts %>
+<%= render 'public/users/post', posts: @posts %>
+  
