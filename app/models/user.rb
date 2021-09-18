@@ -41,6 +41,13 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries, source: :room
+  
+  def unchecked_messages?
+    my_rooms_ids = Entry.select(:room_id).where(user_id: id)
+    other_user_ids = Entry.select(:user_id).where(room_id: my_rooms_ids).where.not(user_id: id)
+    Message.where(user_id: other_user_ids, room_id: my_rooms_ids).where.not(checked: true).any?
+  end
+  
 
   # ---------- DM機能---------
   

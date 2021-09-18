@@ -11,6 +11,7 @@ end
 
 def show
   @room = Room.find(params[:id])
+  @room.check_messages_notification(current_user)
   if Entry.where(user_id: current_user.id, room_id: @room.id).present?
     @messages = @room.messages
     @message = Message.new
@@ -27,4 +28,6 @@ private
 def entry_params
   params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
 end
+
+ 
 end

@@ -57,6 +57,7 @@ class Public::UsersController < ApplicationController
   def dms
     @user = User.find(params[:id])
     @rooms = @user.rooms
+
   end
 
 

@@ -21,6 +21,9 @@
             <% end %>
           </h5>
           <p class="card-text"><%= room.messages.last.content.truncate(30) %></p>
+          <% if current_user.unchecked_messages? %>
+            <i class="fab fa-accessible-icon"></i><%= room.messages.where(checked: 'false').count %>
+          <% end %>
         </div>
       </div>
     </div>

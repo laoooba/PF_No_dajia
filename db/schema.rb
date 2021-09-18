@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_080547) do
     t.integer "user_id"
     t.integer "room_id"
     t.string "content", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
