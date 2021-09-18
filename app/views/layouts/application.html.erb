@@ -15,19 +15,43 @@
     <% if user_signed_in? %>
     <div class="container">
       <div class="heder">
-        <h1><%= link_to "だげほー", root_path, class:"nav-link" %></h1>
+        <h1>
+          <%= link_to root_path do  %>
+          <%= image_tag "heder.png", size: "100x100" %>
+          <% end %>
+        </h1>
         <div class="heder_menu">
           <nav>
             <ul>
               <li class="nav-item"><%= render 'public/searches/form' %></li>
-              <li class="nav-item"><%= current_user.name %></li>
-              <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "新規投稿", new_post_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "投稿記事一覧", posts_path, class:"nav-link" %></li>
+              <li class="nav-item"><%= current_user.name %>さん</li>
+              <li class="nav-item">
+                <%= link_to user_path(current_user) do %>
+                <i class="fas fa-user fa-2x"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_post_path do %>
+                <i class="far fa-plus-square fa-2x"></i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to posts_path do %>
+                <i class="fas fa-indent fa-2x"></i>
+                <% end %>
+                </li>
               <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "だげほー仲間", users_path, class:"nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to users_path do %>
+                <i class="fas fa-users fa-2x"></i>
+                <% end %>
+                </li>
               <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link" %></li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt fa-2x"></i>
+                <% end %>
+                </li>
             </ul>
           </nav>
         </div>
@@ -53,19 +77,11 @@
       </div>
     </div>
     <% end %>
-    <div class="my-0 py-0">
-      <% if flash[:alert] %>
-        <div class="alert">
-          <%= flash[:alert] %>
-        </div>
-     <% elsif flash[:notice] %>
-     　  <div class="notice">
-     　    <%= flash[:notice] %>
-     　 </div>
-   　<% else %>
-  　 <% end %>
   　 </div>
-    <%= yield %>
+  　 <main>
+  　   <%= yield %>
+  　 </main>
+
     <footer>
       <%= link_to "お問い合わせ", new_contact_path %>
     </footer>

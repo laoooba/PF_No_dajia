@@ -1,17 +1,10 @@
 <div class="main-visual">
-  <div class="container">
-    <div class="main-visual__content">
-      <p class="main-visual__content--text">台湾生活をより良いものに</p>
-    </div>
-    <div class="main-visual__content--singin">
-      <% unless user_signed_in? %>
-        <div class="">
-          <%= link_to "ログイン", new_user_session_path, class: "post" %>
-          <%= link_to "学生", new_user_registration_path %>
-          <%= link_to "企業", new_company_path %>
-        </div>
-      <% end %>
-    </div>
+  <div class="main-visual__content--singin ">
+    <% unless user_signed_in? %>
+        <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary" %>
+        <%= link_to "学生", new_user_registration_path, class:"btn btn-outline-primary" %>
+        <%= link_to "企業", new_company_path, class:"btn btn-outline-primary" %>
+    <% end %>
   </div>
 </div>
 <div class="main p-5">
@@ -22,7 +15,6 @@
           <i class="fas fa-american-sign-language-interpreting fa-7x"></i>
           <h5 class="card-title">台湾での生活</h5>
           <p class="card-text">アルバイト情報や勉強の仕方イベント情報などみんなで共有して最高の留学生活にしましょう</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
       <div class="card">
@@ -30,15 +22,13 @@
           <i class="fas fa-atom fa-7x"></i>
           <h5 class="card-title">コミュニティーを広げよう</h5>
           <p class="card-text">同じ志を持った者同士仲良くしましょう</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
       <div class="card">
         <div class="card-body">
           <i class="fab fa-angrycreative fa-7x"></i>
-          <h5 class="card-title">後輩に優しくしよう</h5>
-          <p class="card-text">これから留学を考えている人も今の台湾生活についても後輩たちは先輩の話を聞きたいと思います。質問されたり投稿された時には優しく教えてあげましょう</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">積極的に質問しよう</h5>
+          <p class="card-text">礼儀を大切に質問しましょう</p>
         </div>
       </div>
     </div>
