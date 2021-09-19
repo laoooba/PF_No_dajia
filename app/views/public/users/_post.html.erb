@@ -1,16 +1,16 @@
 <% if posts.exists? %>
 <div class="container mx-auto">
-  <div class="row mx-auto">
-    <div class="col-10 mx-auto shadow-sm rounded">
-      <h1><strong>お悩み</strong></h1>
-      <table class="table">
+  <div class="row mx-auto p-3">
+    <div class="col-12 mx-auto shadow-sm rounded">
+      <h1><strong>投稿</strong></h1>
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th></th>
-            <th>タイトル</th>
-            <th>エリア</th>
-            <th>ステータス</th>
-            <th></th>
+            <th scope="col"></th>
+            <th scope="col">タイトル</th>
+            <th scope="col">ジャンル</th>
+            <th scope="col">ステータス</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +18,9 @@
           <% if post.status == "有効" %>
           <tr>
             <td><% if post.image.attached? %>
-                <%= image_tag post.image.variant(resize:'100x100') %>
+                <%= image_tag post.image.variant(resize:'200x100') %>
                 <% else %>
-                <%= image_tag 'no_image.jpg' %>
+                <%= image_tag 'logo.png', size: "200x100" %>
                 <% end %>
             </td>
             <td><%= link_to post.title, post_path(post) %></td>
@@ -34,4 +34,5 @@
       </table>
     </div>
   </div>
-  <% end %>
+</div>
+<% end %>
