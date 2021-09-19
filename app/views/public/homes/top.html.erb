@@ -34,10 +34,18 @@
     </div>
   </div>
 </div>
-<% @genres.each do |genre| %>
-<%= link_to genre.title, genre_path(genre) %>
-<% end %>
 
+<div class="top_index">
+  <%= render 'public/posts/top_index', posts: @posts %>
+</div>
+
+
+
+
+
+<% @genres.each do |genre| %>
+  <%= link_to genre.title, genre_path(genre) %>
+<% end %>
 <% @tags.each do |tag| %>
 <span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
 <% end %>

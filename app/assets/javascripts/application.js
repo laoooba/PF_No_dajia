@@ -20,9 +20,8 @@
 //= require turbolinks
 //= require_tree .
 
-window.addEventListener('load', () => {
-   document.getElementById('message').onsubmit = () => {
-       App.chat.put_message(document.getElementById('content').value);
-       return false;
-   }
-});
+import '@fortawesome/fontawesome-free/js/all';
+
+
+/*global $*/
+console.log('hoge')　
