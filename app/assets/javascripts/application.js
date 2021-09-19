@@ -20,8 +20,35 @@
 //= require turbolinks
 //= require_tree .
 
-import '@fortawesome/fontawesome-free/js/all';
+
 
 
 /*global $*/
-console.log('hoge')　
+$(function() {
+    $('.top_index').slick({
+  centerMode: true,
+  autoplay: true,
+  centerPadding: '60px',
+  slidesToShow: 6,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 6
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+});
