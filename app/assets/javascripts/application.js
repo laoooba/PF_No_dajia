@@ -28,6 +28,9 @@ $(function() {
     $('.top_index').slick({
   centerMode: true,
   autoplay: true,
+  autoplaySpeed: 0,
+  cssEase: 'linear',
+  speed: 5000,
   centerPadding: '60px',
   slidesToShow: 6,
   responsive: [

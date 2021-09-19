@@ -14,80 +14,79 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
   </head>
-
-  <body>
-    <% if user_signed_in? %>
-    <div class="container">
-      <div class="heder">
-        <h1>
-          <%= link_to root_path do  %>
-          <%= image_tag "heder.png", size: "100x100" %>
-          <% end %>
-        </h1>
-        <div class="heder_menu">
-          <nav>
-            <ul>
-              <li class="nav-item"><%= render 'public/searches/form' %></li>
-              <li class="nav-item"><%= current_user.name %>さん</li>
-              <li class="nav-item">
-                <%= link_to user_path(current_user) do %>
-                <i class="fas fa-user fa-2x"></i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_post_path do %>
-                <i class="far fa-plus-square fa-2x"></i>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to posts_path do %>
-                <i class="fas fa-indent fa-2x"></i>
-                <% end %>
+<body>
+  <heder>
+      <% if user_signed_in? %>
+      <div class="container">
+        <div class="heder">
+          <h1>
+            <%= link_to root_path do  %>
+            <%= image_tag "heder.png", size: "100x100" %>
+            <% end %>
+          </h1>
+          <div class="heder_menu">
+            <nav>
+              <ul>
+                <li class="nav-item"><%= render 'public/searches/form' %></li>
+                <li class="nav-item"><%= current_user.name %>さん</li>
+                <li class="nav-item">
+                  <%= link_to user_path(current_user) do %>
+                  <i class="fas fa-user fa-2x"></i>
+                  <% end %>
                 </li>
-              <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
-              <li class="nav-item">
-                <%= link_to users_path do %>
-                <i class="fas fa-users fa-2x"></i>
-                <% end %>
+                <li class="nav-item">
+                  <%= link_to new_post_path do %>
+                  <i class="far fa-plus-square fa-2x"></i>
+                  <% end %>
                 </li>
-              <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
-              <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt fa-2x"></i>
-                <% end %>
-                </li>
-            </ul>
-          </nav>
+                <li class="nav-item">
+                  <%= link_to posts_path do %>
+                  <i class="fas fa-indent fa-2x"></i>
+                  <% end %>
+                  </li>
+                <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
+                <li class="nav-item">
+                  <%= link_to users_path do %>
+                  <i class="fas fa-users fa-2x"></i>
+                  <% end %>
+                  </li>
+                <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fas fa-sign-out-alt fa-2x"></i>
+                  <% end %>
+                  </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
-    </div>
-    <% elsif admin_signed_in? %>
-    <div class="container">
-      <div class="heder">
-        <h1><%= link_to "だげほー", root_path, class:"nav-link" %></h1>
-        <div class="heder_menu">
-          <nav>
-            <ul>
-              <li class="nav-item">管理者様</li>
-              <li class="nav-item"><%= link_to "会員一覧", admin_users_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "編集待ち一覧", wait_edit_admin_posts_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "タグ一覧", admin_tags_path, class:"nav-link" %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
-            </ul>
-          </nav>
+      <% elsif admin_signed_in? %>
+      <div class="container">
+        <div class="heder">
+          <h1><%= link_to "だげほー", root_path, class:"nav-link" %></h1>
+          <div class="heder_menu">
+            <nav>
+              <ul>
+                <li class="nav-item">管理者様</li>
+                <li class="nav-item"><%= link_to "会員一覧", admin_users_path, class:"nav-link" %></li>
+                <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class:"nav-link" %></li>
+                <li class="nav-item"><%= link_to "編集待ち一覧", wait_edit_admin_posts_path, class:"nav-link" %></li>
+                <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class:"nav-link" %></li>
+                <li class="nav-item"><%= link_to "タグ一覧", admin_tags_path, class:"nav-link" %></li>
+                <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"nav-link" %></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
-  　 </div>
-  　 <main>
-  　   <%= yield %>
-  　 </main>
+  </heder>
+<%= yield %>
 
-    <footer>
-      <%= link_to "お問い合わせ", new_contact_path %>
-    </footer>
-  </body>
+  <footer>
+    <%= link_to "お問い合わせ", new_contact_path %>
+  </footer>
+</body>
 </html>
