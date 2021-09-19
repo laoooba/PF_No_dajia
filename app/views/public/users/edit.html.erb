@@ -21,13 +21,13 @@
       </div>
       
       <div class="form-group">
-        <label for="inputName">Name</label>
+        <label for="inputName">名前</label>
         <%= f.text_field :name, autofocus: true, placeholder:"名前", class:"form-control" %>
       </div>
 
       <div class="form-group">
-        <label for="inputIntroduction">Introduction</label>
-        <%= f.text_area :description, placeholder:"サイコー", class:"form-control" %>
+        <label for="inputIntroduction">紹介文(140)</label>
+        <%= f.text_area :description,size: "20x7", placeholder:"サイコー", class:"form-control" %>
       </div>
       <!---------------- user==学生---------------------->
       <% if @user.student_user.present? %>
@@ -46,12 +46,12 @@
       <% else %>
         <%= f.fields_for :company_user do |company| %>
         <div class="form-group">
-          <label for="inputCompanyUrl">学校名</label>
+          <label for="inputCompanyUrl">企業URL</label>
           <%= company.text_field :company_url, autocomplete: "off", class:"form-control" %>
         </div>
         
         <div class="form-group">
-          <label for="inputPhoneNumber">学校名</label>
+          <label for="inputPhoneNumber">電話番号</label>
           <%= company.text_field :phone_number, autocomplete: "off", class:"form-control" %>
         </div>
         <% end %>
