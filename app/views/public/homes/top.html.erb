@@ -35,8 +35,26 @@
   </div>
 </div>
 
-<div class="top_index">
-  <%= render 'public/posts/top_index', posts: @posts %>
+<div class= "index">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3">
+        <% @tags.each do |tag| %>
+        <span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
+        <% end %>
+        </div>
+      <div class="col-9">
+        <div class="index__genre text-center">
+        <% @genres.each do |genre| %>
+        <%= link_to genre.title, genre_path(genre) %>
+        <% end %>
+        </div>
+        <div class="top_index">
+        <%= render 'public/posts/top_index', posts: @posts %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

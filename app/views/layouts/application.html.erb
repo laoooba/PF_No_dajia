@@ -17,17 +17,15 @@
 <body>
   <heder>
       <% if user_signed_in? %>
-      <div class="container">
-        <div class="heder">
+        <div class="heder pl-5">
           <h1>
             <%= link_to root_path do  %>
-            <%= image_tag "heder.png", size: "100x100" %>
+            <%= image_tag "heder.png", style: "object-fit: cover; width: 100px; height: 75px;" %>
             <% end %>
           </h1>
-          <div class="heder_menu">
+          <div class="heder_menu pr-5">
             <nav>
               <ul>
-                <li class="nav-item"><%= render 'public/searches/form' %></li>
                 <li class="nav-item"><%= current_user.name %>さん</li>
                 <li class="nav-item">
                   <%= link_to user_path(current_user) do %>
@@ -81,7 +79,6 @@
         </div>
       </div>
       <% end %>
-    </div>
   </heder>
 <%= yield %>
 

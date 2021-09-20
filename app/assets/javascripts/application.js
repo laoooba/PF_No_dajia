@@ -32,7 +32,7 @@ $(function() {
   cssEase: 'linear',
   speed: 5000,
   centerPadding: '60px',
-  slidesToShow: 6,
+  slidesToShow: 5,
   responsive: [
     {
       breakpoint: 768,
@@ -40,7 +40,7 @@ $(function() {
         arrows: false,
         centerMode: true,
         centerPadding: '40px',
-        slidesToShow: 6
+        slidesToShow: 3
       }
     },
     {
