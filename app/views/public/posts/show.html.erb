@@ -1,102 +1,65 @@
-<div class="container mx-auto" style="width: 200px;">
+
+<div class="container-fluid pt-2">
   <div class="row">
-    <h1><strong>お悩み</strong></h1>
-  </div>
-</div>
-<div class="container mx-auto">
-  <div class="row mx-auto px-auto">
-    <div class="col-10 mx-auto shadow-sm rounded">
-      <% unless @post.status == "有効" %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>ステータス</th>
-            <td><%= @post.status %></td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>お問い合わせ</th>
-            <td><%= @post.status_content %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>ユーザー名</th>
-            <td><% if @post.image.attached? %>
-                <%= image_tag @post.image.variant(resize:'300x300') %>
-                <% else %>
-                <%= image_tag 'no_image.jpg' %>
-                <% end %>
-            </td>
-            <td><%= link_to user_path(@user) do %>
-              <%= @user.name %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>タイトル</th>
-            <td><%= @post.title %></td>
-            <td><%= time_ago_in_words(@post.created_at) %>前</td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>地域</th>
-            <td><%= link_to @post.genre.title, genre_path(@post.genre) %></td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>タグ</th>
-            <% @post.tags.each do |tag| %>
-            <td>
-              <span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
-            </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>本文</th>
-            <td><%= @post.body %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% if @user == current_user %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><%= link_to '編集', edit_post_path(@post.id), class:"btn btn-success" %></td>
-            <td><%= link_to '削除', post_path(@post.id), method: :delete, class:"btn btn-danger" %></rd>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="favorite-btn_<%= @post.id %>"><%= render 'public/favorites/form', post: @post %></td>
-            <td class="comment"><%= render 'public/comments/index', post: @post %></td>
-            <td class="new-comment"><%= render 'public/comments/form', post: @post, comment: @comment %></rd>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-7">
+      <div class="card mb-3">
+        <% unless @post.status == "有効" %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <%= @post.status %>
+            お問い合わせ:
+            <%= @post.status_content %>
+          </li>
+        </ul>
+        <% end %>
+        <div class="card-img-top" style="height: 300px;">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image,  style: "object-fit: contain; width: 100%; height: 100%;" %>
+        <% else %>
+          <%= image_tag 'heder1.png', style: "object-fit: contain; width: 100%; height: 100%;" %>
+        <% end %>
+        </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= @post.title %></h5>
+        <p class="card-text"><%= @post.body %></p>
+        <p class="card-text"><small class="text-muted">
+          <%= time_ago_in_words(@post.created_at) %>前
+          <%= link_to @post.genre.title, genre_path(@post.genre) %>
+          <% @post.tags.each do |tag| %>
+          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-dark" %>
+          <% end %>
+          </small>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <% if @post.image.attached? %>
+            <%= image_tag @post.image, style: "object-fit: cover; width: 100%; height: 100%;" %>
+          <% else %>
+            <%= image_tag 'no_image.jpg' %>
+          <% end %>
+
+          <%= link_to user_path(@user) do %>
+            <%= @user.name %>
+          <% end %>
+          <% if @user == current_user %>
+            <%= link_to '編集', edit_post_path(@post.id), class:"btn btn-outline-success" %>
+            <%= link_to '削除', post_path(@post.id), method: :delete, class:"btn btn-outline-danger" %>
+          <% end %>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="card mb-3">
+      <div class="card-body">
+          <div class="favorite-btn_<%= @post.id %>"><%= render 'public/favorites/form', post: @post %></div>
+          <div class="new-comment"><%= render 'public/comments/form', post: @post, comment: @comment %></div>
+          <div class="comment"><%= render 'public/comments/index', post: @post %></div>
+      </div>
+      </div>
     </div>
   </div>
 </div>
+

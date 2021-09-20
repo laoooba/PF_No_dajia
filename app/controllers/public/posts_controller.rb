@@ -40,6 +40,11 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if current_user.student_user
+      @genres = Genre.where.not(id: 1)
+    else
+      @genres = Genre.all
+    end
   end
 
   def update
