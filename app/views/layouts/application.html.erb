@@ -6,10 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/93f4e77202.js" crossorigin="anonymous"></script>
+    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/scss" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.scss"/>
     <link rel="stylesheet" type="text/scss" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.scss"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
@@ -29,29 +31,29 @@
                 <li class="nav-item"><%= current_user.name %>さん</li>
                 <li class="nav-item">
                   <%= link_to user_path(current_user) do %>
-                  <i class="fas fa-user fa-2x"></i>
+                  <i class="fas fa-user fa-2x faa-pulse animated-hover"></i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_post_path do %>
-                  <i class="far fa-plus-square fa-2x"></i>
+                  <i class="far fa-plus-square fa-2x faa-pulse animated-hover"></i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to posts_path do %>
-                  <i class="fas fa-indent fa-2x"></i>
+                  <i class="fas fa-indent fa-2x faa-pulse animated-hover"></i>
                   <% end %>
                   </li>
                 <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to users_path do %>
-                  <i class="fas fa-users fa-2x"></i>
+                  <i class="fas fa-users fa-2x faa-pulse animated-hover"></i>
                   <% end %>
                   </li>
                 <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fas fa-sign-out-alt fa-2x"></i>
+                  <i class="fas fa-sign-out-alt fa-2x faa-pulse animated-hover"></i>
                   <% end %>
                   </li>
               </ul>
