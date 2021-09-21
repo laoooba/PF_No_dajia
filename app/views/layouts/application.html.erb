@@ -16,7 +16,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
   </head>
-<body>
+<body class="pb-5">
   <heder>
       <% if user_signed_in? %>
         <div class="heder pl-5">
@@ -84,10 +84,15 @@
     </div>
     <% end %>
   </heder>
-<%= yield %>
+  <main class="mb-5">
+    <%= yield %>
+  </main>
+
 
   <footer>
-    <%= link_to "お問い合わせ", new_contact_path %>
+    <div class="fixed-bottom">
+      <%= link_to "お問い合わせ", new_contact_path %>
+    </div>
   </footer>
 </body>
 </html>
