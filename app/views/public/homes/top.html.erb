@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-3">
         <% @tags.each do |tag| %>
-        <span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
+        <span class="badge badge-pill badge-dark"><%= link_to tag.title, tag_path(tag), class: "badge badge-dark"%></span>
         <% end %>
         </div>
       <div class="col-9">
@@ -59,11 +59,3 @@
 
 
 
-
-
-<% @genres.each do |genre| %>
-  <%= link_to genre.title, genre_path(genre) %>
-<% end %>
-<% @tags.each do |tag| %>
-<span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
-<% end %>
