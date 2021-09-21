@@ -1,4 +1,11 @@
-<%= render 'public/searches/form' %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 p-2">
+      <%= render 'public/searches/form' %>
+    </div>
+  </div>
+</div>
+
 <% @posts.each do |post| %>
 <% if post.status == "有効" %>
   <div class="col-md-3" style="float:left">
