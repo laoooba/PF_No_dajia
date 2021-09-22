@@ -1,35 +1,49 @@
-<h1>DM</h1>
-
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-<h5><%= link_to e.user.name, user_path(e.user.id) %></h5>
-<% end %>
-
-<div class="chat">
-  <% if @messages.present? %>
-    <% @messages.each do |m| %>
-      <div class="chat-box">
-        <div class="chat-face">
-          <% if m.user.profile_image.attached? %>
-            <%= image_tag m.user.profile_image.variant(resize:'100x100') %>
-          <% else %>
-            <%= image_tag 'no_image.jpg' %>
+<div class="container">
+  <h1 class="text-center"><i class="far fa-handshake faa-float animated"></i></h1>
+</div>
+<div class="container bg-light">
+  <div class="wrapper p-5">
+    <div class="main">
+        <div class="px-2 scroll">
+              <% if @messages.present? %>
+              <% @messages.each do |m| %>
+              <% unless m.user == current_user %>
+            <div class="d-flex align-items-center">
+                <div class="text-left p-1">
+                  <% if m.user.profile_image.attached? %>
+                    <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
+                  <% end %>
+                </div>
+                <div class="pr-2 pl-1"> 
+                    <p class="font-weight-bold"><%= m.content %></p>
+                </div>
+            </div>
+            <% else %>
+            <div class="d-flex align-items-center text-right justify-content-end ">
+                <div class="pr-2">
+                    <p class="font-weight-bold"><%= m.content %></p>
+                </div>
+                <div class="p-1">
+                  <% if m.user.profile_image.attached? %>
+                    <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
+                  <% end %>
+                </div>
+            </div>
+            <% end %>
+            <% end %>
+            <% end %>
+        </div>
+        <div id="message">
+          <%= form_with model: @message, local:true do |f| %>
+          <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control form-control-lg" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <p class="p-1"><%= f.submit "投稿",class:"btn btn-outline-success"%></p>
           <% end %>
         </div>
-        <div id="chat-hukidashi"> <strong><%= m.content %></strong> <br>
-          <%= time_ago_in_words(m.created_at) %>前<%= m.user.name %>さん
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
-<div id="message">
-    <%= form_with model: @message, local:true do |f| %>
-      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit "投稿",class: 'form-submit'%>
-    <% end %>
-</div>
-
-
-
