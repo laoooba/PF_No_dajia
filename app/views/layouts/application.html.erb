@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/93f4e77202.js" crossorigin="anonymous"></script>
-    
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/scss" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.scss"/>
@@ -85,14 +85,21 @@
     <% end %>
   </heder>
   <main class="mb-5">
-    <%= yield %>
+       <%= yield %>
   </main>
+  
 
 
-  <footer>
-    <div class="fixed-bottom">
-      <%= link_to "お問い合わせ", new_contact_path %>
-    </div>
+<footer class="bg-white  shadow text-center text-lg-start ">
+     <div class="fixed-bottom text-center p-3 bg-light">
+       @2021 08 Team JJJ
+     </div>
   </footer>
+
+<!--<footer>-->
+<!--  <div class="contact">-->
+<!--    <%#= link_to "お問い合わせ", new_contact_path %>-->
+<!--  </div>-->
+<!--</footer>-->
 </body>
 </html>
