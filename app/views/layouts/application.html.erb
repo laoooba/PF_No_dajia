@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>だげほー</title>
-    <%= favicon_link_tag('logo.png') %>
+    <%= favicon_link_tag('logo1.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/93f4e77202.js" crossorigin="anonymous"></script>
@@ -22,7 +22,7 @@
         <div class="heder pl-5">
           <h1>
             <%= link_to root_path do  %>
-            <%= image_tag "heder.png", style: "object-fit: cover; width: 100px; height: 75px;" %>
+            <%= image_tag "logo1.png", style: "object-fit: cover; width: 100px; height: 75px;" %>
             <% end %>
           </h1>
           <div class="heder_menu pr-5">
@@ -87,19 +87,13 @@
   <main class="mb-5">
        <%= yield %>
   </main>
-  
+
 
 
 <footer class="bg-white  shadow text-center text-lg-start ">
      <div class="fixed-bottom text-center p-3 bg-light">
        @2021 08 Team JJJ
      </div>
-  </footer>
-
-<!--<footer>-->
-<!--  <div class="contact">-->
-<!--    <%#= link_to "お問い合わせ", new_contact_path %>-->
-<!--  </div>-->
-<!--</footer>-->
+  </footer
 </body>
 </html>
