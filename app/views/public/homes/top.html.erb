@@ -2,8 +2,8 @@
   <div class="main-visual__content--singin ">
     <% unless user_signed_in? %>
         <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary" %>
-        <%= link_to "学生", new_user_registration_path, class:"btn btn-outline-primary" %>
-        <%= link_to "企業", new_company_path, class:"btn btn-outline-primary" %>
+        <%= link_to "学生の方", new_user_registration_path, class:"btn btn-outline-primary" %>
+        <%= link_to "企業の方", new_company_path, class:"btn btn-outline-primary" %>
     <% end %>
   </div>
 </div>
@@ -34,7 +34,7 @@
     </div>
   </div>
 </div>
-
+<% if user_signed_in? %>
 <div class= "index">
   <div class="container-fluid">
     <div class="row">
@@ -59,13 +59,27 @@
         </div>
         <div>
           <% @tags.each do |tag| %>
-          <span class="badge badge-pill badge-dark"><%= link_to tag.title, tag_path(tag), class: "badge badge-dark"%></span>
+          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-dark" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<% else %>
+<div class= "index">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="top_index">
+          <%= render 'public/posts/top_index', posts: @posts %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 
 
 

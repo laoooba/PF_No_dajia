@@ -102,4 +102,9 @@ main {
 
 }
 
+.scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 400px
+}
 

@@ -26,7 +26,7 @@
           <%= time_ago_in_words(@post.created_at) %>前
           <%= link_to @post.genre.title, genre_path(@post.genre) %>
           <% @post.tags.each do |tag| %>
-          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-dark" %>
+          <span class="badge badge-pill badge-info"><%= link_to tag.title, tag_path(tag), class: "badge badge-info"%></span>
           <% end %>
           </small>
         </p>

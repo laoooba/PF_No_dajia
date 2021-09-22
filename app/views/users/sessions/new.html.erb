@@ -16,7 +16,9 @@
       <%= f.password_field :password,class:"form-control form-control-lg", autocomplete: "current-password" %>
     </div>
     <div class="form-group">
-      <%= f.submit "Log in", class:"btn btn-outline-primary" %>
+      <%= f.submit "ログイン", class:"btn btn-outline-primary" %>
+      <%= link_to "学生の方", new_user_registration_path, class:"btn btn-outline-primary" %>
+      <%= link_to "企業の方", new_company_path, class:"btn btn-outline-primary" %>
     </div>
   <% end %>
   </div>

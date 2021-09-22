@@ -31,29 +31,29 @@
                 <li class="nav-item"><%= current_user.name %>さん</li>
                 <li class="nav-item">
                   <%= link_to user_path(current_user) do %>
-                  <i class="fas fa-user fa-2x faa-pulse animated-hover"></i>
+                  <i class="fas fa-user fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to new_post_path do %>
-                  <i class="far fa-plus-square fa-2x faa-pulse animated-hover"></i>
+                  <i class="far fa-plus-square fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to posts_path do %>
-                  <i class="fas fa-indent fa-2x faa-pulse animated-hover"></i>
+                  <i class="fas fa-indent fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
                   <% end %>
                   </li>
                 <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to users_path do %>
-                  <i class="fas fa-users fa-2x faa-pulse animated-hover"></i>
+                  <i class="fas fa-users fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
                   <% end %>
                   </li>
                 <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
                 <li class="nav-item">
                   <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fas fa-sign-out-alt fa-2x faa-pulse animated-hover"></i>
+                  <i class="fas fa-sign-out-alt fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
                   <% end %>
                   </li>
               </ul>
