@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1><%= @user.name %>ページ編集</h1>
+      <% if @user.profile_image.attached? %>
+      <%= image_tag @user.profile_image.variant(resize:'300x300') %>
+      <% else %>
+      <%= image_tag 'no_image.jpg' %>
+      <% end %>
+      <div class="error_explanation">
+        <% if @user.errors.any? %>
+        <div class="alert">
+          <h1><%= @user.errors.count %>errors prohibited this obj from being saved:</h1>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <%= form_with model:@user, url: admin_user_path,  local:true do |f| %>
+      <div class="form-group">
+        <label for="inputName">名前</label>
+        <%= f.text_field :name, autofocus: true, placeholder:"名前", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputIntroduction">一言</label>
+        <%= f.text_area :description, placeholder:"サイコー", class:"form-control" %>
+      </div>
+      <!---------------- user==学生---------------------->
+      <% if @user.student_user.present? %>
+        <%= f.fields_for :student_user do |student| %>
+        <div class="form-group">
+          <label for="inputSchoolName">学校名</label>
+          <%= student.text_field:school_name, autocomplete: "off", class:"form-control" %>
+        </div>
+
+         <div class="form-group">
+          <label for="inputMajor">学科名</label>
+          <%= student.text_field :major, autocomplete: "off", class:"form-control" %>
+        </div>
+        <% end %>
+        <!---------------- user==企業---------------------->
+      <% else %>
+        <%= f.fields_for :company_user do |company| %>
+        <div class="form-group">
+          <label for="inputCompanyUrl">企業URL</label>
+          <%= company.text_field :company_url, autocomplete: "off", class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPhoneNumber">電話番号</label>
+          <%= company.text_field :phone_number, autocomplete: "off", class:"form-control" %>
+        </div>
+        <% end %>
+      <% end %>
+        <div class="form-group">
+          <label for="inputIsDeleted">ステータス</label>
+          <% if @user.is_deleted == true %>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", {value: :true, checked: true, style: "display: inline-block;"} %>
+          <% elsif @user.is_deleted == false %>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", {value: :false,checked: true,style: "display: inline-block;"} %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+          <% end %>
+        </div>
+      <div class="form-group">
+        <%= f.submit "更新", class: "btn btn-outline-primary" %>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>

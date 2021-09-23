@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <% if current_user.id == @user.id %>
+    <% if @rooms.exists? %>
+      <% @rooms.each do |room| %>
+        <% room.users.each do |user| %>
+        <% unless user.id == current_user.id %>
+         <%= link_to room_path(room) do %>
+      <div class="col-md-3" style="float:left">
+          <div class="card m-3  shadow-sm">
+            <div class="bd-placeholder-img card-img-top pt-1">
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image, style: "object-fit: contain; width: 100%; height: 190px;" %>
+                  <% else %>
+                  <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 100%; height: 190px;" %>
+                  <% end %>
+            </div>
+                <% end %>
+          <div class="card-body">
+            <h5 class="card-title" style="color: black;"><%= user.name %>さん</h5>
+            <p class="card-text" style="color: black;"><%= room.messages.last.content.truncate(30) %></p>
+            <% if current_user.unchecked_messages? %>
+              <% if room.messages.where(checked: 'false') %>
+                <p class="card-text text-right" style="color: 1976D2;"><i class="fas fa-child faa-ring animated"></i><%= room.messages.where(checked: 'false').count %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+         <% end %>
+        <% end %>
+      <% end %>
+      <% else %>
+      <h1>履歴がありません</h1>
+      <% end %>
+    <% end %>
+  </div>
+</div>

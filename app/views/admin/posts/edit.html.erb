@@ -1,0 +1,73 @@
+<div class="container mx-auto" style="width: 300px;">
+  <div class="row">
+    <h1><strong>投稿詳細編集</strong></h1>
+  </div>
+</div>
+<div class="container mx-auto">
+  <div class="row mx-auto px-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <%= form_with model:@post, url: admin_post_path, local:true do |f| %>
+      <div class="form-group">
+        <label for="inputStatus">ステータス</label>
+        <%= f.select :status, Post.statuses.keys,{}, class:"form-control", style:"width: 130px;" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputStatusContent">お問い合わせ</label>
+        <%= f.text_area :status_content, size:"20x5", placeholder:"お問い合わせ内容を記入してください", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "更新", class:"btn btn-outline-success" %>
+      </div>
+      <% end %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td style="width: 100px;"><% if @post.image.attached? %>
+                <%= image_tag @post.image, style: "object-fit: contain; width: 100px; height: 100px;" %>
+                <% else %>
+                <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 100px; height: 80px;" %>
+                <% end %>
+            </td>
+            <th class="text-center pt-5" style="width: 200px;">ユーザー名</th>
+            <td class="pt-5"><%= link_to user_path(@user) do %>
+              <%= @user.name %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th style="width: 200px;">タグ</th>
+            <% @post.tags.each do |tag| %>
+            <td>
+              <span class= 'badge badge-info'><%= tag.title %></span>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th style="width: 200px;">タイトル</th>
+            <td><%= @post.title %></td>
+            <th style="width: 200px;">ジャンル</th>
+            <td><%= @post.genre.title %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th style="width: 200px;">本文</th>
+            <td><%= @post.body %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

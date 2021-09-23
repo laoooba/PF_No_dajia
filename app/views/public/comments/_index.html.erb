@@ -1,0 +1,16 @@
+<% post.comments.each do |comment| %>
+  <% if comment.user.profile_image.attached? %>
+    <%= image_tag comment.user.profile_image, style: "object-fit: contain; width: 100px; height: 100px;" %>
+  <% else %>
+    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 100px; height: 100px;" %>
+  <% end %>
+  <%= comment.user.name %>
+  <p class="pl-3"><%= comment.comment %></p>
+  <% if comment.user == current_user %>
+  <%= link_to post_comment_path(post_id: comment.post, id: comment), method: :delete, remote: true do %>
+  <i class="far fa-trash-alt" style="color: red;"></i><br>
+  <% end %></i>
+  <% else %>
+  <br>
+  <% end %>
+<% end %>

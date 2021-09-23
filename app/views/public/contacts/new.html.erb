@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>お問い合わせ</h1>
+      <%= form_with model:@contact, url: confirm_path, method: :post, local:true do |f| %>
+      <%= render 'layouts/error_messages', model: @contact %>
+      <div class="form-group">
+        <label for="inputName">名前</label>
+        <%= f.text_field :name, autofocus: true, placeholder:"名前", class:"form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputEmail">メールアドレス</label>
+        <%= f.text_field :email, autofocus: true, placeholder:"exmple@gmail.com", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputTitle">タイトル</label>
+        	<%= f.text_field :title, placeholder:"タイトルをお書きください",  class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputBody">本文</label>
+        <%= f.text_area :body,size: "20x10", placeholder:"要件をお書きください", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "お問い合わせ確認", class:"btn btn-outline-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

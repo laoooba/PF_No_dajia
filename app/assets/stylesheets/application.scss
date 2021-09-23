@@ -1,0 +1,111 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import "slick-theme";
+@import "slick";
+
+// -----------------------------------------------------
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+
+.heder{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #90caf9;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+h1{
+ padding: 0;
+ margin: 0;
+}
+ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}
+.nav-link{
+  color: black;
+  text-decoration: none;
+  padding: 0;
+}
+
+li{
+  padding: 10px;
+
+}
+.main-visual {
+  width: 100%;
+  height: 550px;
+  background-image: url(heder1.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center ;
+
+}
+
+.main-visual__content--singin{
+  text-align: center;
+
+}
+
+
+
+
+// ------------------------------------------------------------
+
+
+// ---------------signin-----------------------------
+main { 
+  margin-bottom: 50px;
+  
+}
+
+.signin__visual{
+  width: 100%;
+  height:300px;
+  background-image: url(login.png);
+  background-repeat:no-repeat;
+  background-position: center ;
+}
+
+.scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 400px
+}
+
+
+

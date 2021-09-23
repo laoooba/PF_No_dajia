@@ -1,0 +1,25 @@
+<table class="table table">
+  <thead>
+    <tr>
+      <th scope="col">氏名</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">本文</th>
+      <th scope="col">完了</th>
+    </tr>
+  </thead>
+  <% @contacts.each do |contact| %>
+  <tbody>
+    <tr>
+      <th><%= contact.name %></th>
+      <td><%= contact.email %></td>
+      <td><%= contact.title %></td>
+      <td><%= link_to "編集", edit_admin_contact_path(contact) %></td>
+      <% if contact.replay_text.present? %>
+      <td><%= contact.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<%= paginate @contacts %>

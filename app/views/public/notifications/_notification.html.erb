@@ -1,0 +1,37 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="container">
+  <div class="row">
+      <div class="col-12 p-1">
+        <%= link_to user_path(visitor) do %>
+        <% if visitor.profile_image.attached? %>
+          <%= image_tag visitor.profile_image, style: "object-fit: contain; width: 100px; height: 100px;" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 100px; height: 100px;" %>
+        <% end %>
+      <% end %>
+        <%= visitor.name %>さん
+      <% case notification.action %>
+        <% when 'follow' %>
+          <%= "あなたをフォローしました。" %><%= time_ago_in_words(notification.created_at) %>前
+        <% when 'favorite' %>
+          <%= link_to "あなたの投稿", notification.post %><%= "にいいねしました。" %><%= time_ago_in_words(notification.created_at) %>前
+        <% when 'comment' %>
+          <% if notification.post.user_id == visited.id %>
+            <%= link_to "あなたの投稿", notification.post %>
+          <% else %>
+            <%= link_to post_path(notification.post) do %>
+              <% if visitor.profile_image.attached? %>
+                <%= image_tag visitor.profile_image.variant(resize:'300x300') %>
+              <% else %>
+                <%= image_tag 'no_image.jpg' %>
+              <% end %>
+              <% end %>
+              <%= notification.post.user.name %>さんが
+          <% end %>
+          <%= "にコメントしました。" %><%= time_ago_in_words(notification.created_at) %>前
+          <p><%= Comment.find_by(id: notification.comment_id)&.comment %></p>
+        <% end %>
+      </div>
+  </div>
+</div>

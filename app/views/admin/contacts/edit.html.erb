@@ -1,0 +1,54 @@
+<div class="container mx-auto" style="width: 200px;">
+  <div class="row">
+    <h1><strong>お悩み</strong></h1>
+  </div>
+</div>
+<div class="container mx-auto">
+  <div class="row mx-auto px-auto">
+    <div class="col-10 mx-auto shadow-sm rounded">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td><%= @contact.name %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @contact.email %></td>
+          </tr>
+        </tbody>
+      </table>
+       <table class="table">
+        <tbody>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @contact.title %></td>
+          </tr>
+        </tbody>
+      </table>
+      </table>
+       <table class="table">
+        <tbody>
+          <tr>
+            <th>本文</th>
+            <td><%= @contact.body %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= form_with model:@contact, url: admin_contact_path,  local:true do |f| %>
+      <div class="form-group">
+        <label for="inputStatusContent">お問い合わせ</label>
+        <%= f.text_area :replay_text, placeholder:"お問い合わせの返答をお書きください", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "更新", class:"btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

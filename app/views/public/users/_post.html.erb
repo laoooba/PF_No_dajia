@@ -1,0 +1,39 @@
+<% if posts.exists? %>
+<div class="container mx-auto">
+  <div class="row mx-auto p-3">
+    <div class="col-12 mx-auto shadow-sm rounded">
+      <h1 class="alert alert-primary"><strong>投稿</strong></h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">タイトル</th>
+            <th scope="col">ジャンル</th>
+            <th scope="col">ステータス</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% posts.each do |post| %>
+          <% if post.status == "有効" %>
+          <tr>
+            <td><% if post.image.attached? %>
+                <%= image_tag post.image.variant(resize:'200x100') %>
+                <% else %>
+                <%= image_tag 'logo.png', size: "200x100" %>
+                <% end %>
+            </td>
+            <td><h5><%= link_to post.title, post_path(post) %></h5></td>
+            <td><%= post.genre.title %></td>
+            <td><%= post.status %></td>
+            <td><%= link_to '編集', edit_post_path(post.id), class:"btn btn-outline-success" %></td>
+          </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @posts %>
+  </div>
+</div>
+<% end %>

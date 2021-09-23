@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="signin__visual"></div>
+  </div>
+</div>
+<div class="container">
+    <div class="row">
+    <%= form_with model:@user, url: session_path(resource_name), class: "form-signin", local:true do |f| %>
+      <div class="form-group">
+      <label for="InputEmail1">メールアドレス</label>
+      <%= f.email_field :email, autofocus: true,class:"form-control form-control-lg", autocomplete: "email" %>
+    </div>
+
+    <div class="form-group">
+      <label for="InputPassword">パスワード</label>
+      <%= f.password_field :password,class:"form-control form-control-lg", autocomplete: "current-password" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "ログイン", class:"btn btn-outline-primary" %>
+      <%= link_to "学生の方", new_user_registration_path, class:"btn btn-outline-primary" %>
+      <%= link_to "企業の方", new_company_path, class:"btn btn-outline-primary" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
