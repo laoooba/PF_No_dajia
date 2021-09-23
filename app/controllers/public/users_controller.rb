@@ -3,13 +3,13 @@ class Public::UsersController < ApplicationController
 
 
   def index
-    @users = User.page(params[:page]).per(6)
+    @users = User.order(created_at: :desc).page(params[:page]).per(6)
   end
 
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
 
     # ------------------DM機能------------------
     @currentUserEntry = Entry.where(user_id: current_user.id)

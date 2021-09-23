@@ -13,16 +13,19 @@
         <label for="inputImage">画像</label>
         	<%= f.file_field :image, class:"form-control form-control-lg" %>
         </div>
-        
+
         <div class="form-group col-4">
         <label for="inputTitle">エリアを選んでね</label>
-        <%= f.collection_select :genre_id, @genres, :id, :title, prompt: "--選択してください--", class:"form-control form-control-lg" %>
+        <%= f.collection_select :genre_id, @genres, :id, :title,{ prompt: "--選択してください--"}, class:"form-control form-control-lg" %>
         </div>
 
         <div class="form-group col-4">
         <label for="inputTitle">タグを選んでね</label>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title) do |t| %>
-          <%= t.label { t.check_box + t.text } %>
+          <%= t.label { t.text } %>
+          <%= t.check_box do %>
+            <%= t.check_box + t.text %>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -33,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "だげほー", class:"btn btn-outline-success" %>
+        <%= f.submit "だげほー", class:"btn btn-outline-primary" %>
       </div>
       <% end %>
     </div>

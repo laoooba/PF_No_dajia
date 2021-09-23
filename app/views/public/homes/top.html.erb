@@ -2,8 +2,8 @@
   <div class="main-visual__content--singin ">
     <% unless user_signed_in? %>
         <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary" %>
-        <%= link_to "学生", new_user_registration_path, class:"btn btn-outline-primary" %>
-        <%= link_to "企業", new_company_path, class:"btn btn-outline-primary" %>
+        <%= link_to "学生の方", new_user_registration_path, class:"btn btn-outline-primary" %>
+        <%= link_to "企業の方", new_company_path, class:"btn btn-outline-primary" %>
     <% end %>
   </div>
 </div>
@@ -34,36 +34,52 @@
     </div>
   </div>
 </div>
-
+<% if user_signed_in? %>
 <div class= "index">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3">
-        <% @tags.each do |tag| %>
-        <span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
-        <% end %>
+      <div class="col-3 ">
+        <div class="index__genre text-center">
+          <% @genres.each do |genre| %>
+          <%= link_to genre_path(genre) do %>
+          <div class="genre_image p-1">
+            <% if genre.image.attached? %>
+              <%= image_tag genre.image,  style: "object-fit: cover; width: 100%; height: 103px;" %>
+            <% else %>
+              <%= image_tag 'logo.png', style: "object-fit: cover; width: 100%; height: 100px;" %>
+            <% end %>
+          <% end %>
+          </div>
+          <% end %>
+        </div>
         </div>
       <div class="col-9">
-        <div class="index__genre text-center">
-        <% @genres.each do |genre| %>
-        <%= link_to genre.title, genre_path(genre) %>
-        <% end %>
-        </div>
         <div class="top_index">
-        <%= render 'public/posts/top_index', posts: @posts %>
+          <%= render 'public/posts/top_index', posts: @posts %>
+        </div>
+        <div>
+          <% @tags.each do |tag| %>
+          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-dark" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-<% @genres.each do |genre| %>
-  <%= link_to genre.title, genre_path(genre) %>
+<% else %>
+<div class= "index">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="top_index">
+          <%= render 'public/posts/top_index', posts: @posts %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
-<% @tags.each do |tag| %>
-<span class= 'badge badge-primary'><%= link_to tag.title, tag_path(tag) %></span>
-<% end %>
+
+
+
+

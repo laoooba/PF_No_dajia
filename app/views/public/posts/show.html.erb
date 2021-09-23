@@ -26,7 +26,7 @@
           <%= time_ago_in_words(@post.created_at) %>前
           <%= link_to @post.genre.title, genre_path(@post.genre) %>
           <% @post.tags.each do |tag| %>
-          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-dark" %>
+          <span class="badge badge-pill badge-info"><%= link_to tag.title, tag_path(tag), class: "badge badge-info"%></span>
           <% end %>
           </small>
         </p>
@@ -34,7 +34,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <% if @post.image.attached? %>
-            <%= image_tag @post.image, style: "object-fit: cover; width: 100%; height: 100%;" %>
+            <%= image_tag @post.image, style: "object-fit: contain; width: 100px; height: 100px;" %>
           <% else %>
             <%= image_tag 'no_image.jpg' %>
           <% end %>

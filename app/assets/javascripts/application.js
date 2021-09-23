@@ -24,7 +24,10 @@
 
 
 /*global $*/
-$(function() {
+
+
+document.addEventListener("turbolinks:load", () => {
+  $(function() {
     $('.top_index').slick({
   centerMode: true,
   autoplay: true,
@@ -55,3 +58,4 @@ $(function() {
   ]
 });
 });
+})

@@ -88,7 +88,10 @@ li{
 
 
 // ---------------signin-----------------------------
-
+main { 
+  margin-bottom: 50px;
+  
+}
 
 .signin__visual{
   width: 100%;
@@ -99,14 +102,9 @@ li{
 
 }
 
-
-
-
-footer{
-    /*footerの装飾*/
-    width: 100%;
-    background-color: #90caf9;
-    text-align: center;
-    padding: 30px 0;
+.scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 400px
 }
 

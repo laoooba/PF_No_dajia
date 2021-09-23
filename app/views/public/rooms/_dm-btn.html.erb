@@ -1,5 +1,5 @@
 <% if isRoom == true %>
-  <%= link_to "チャットへ", room_path(roomID) %>
+  <%= link_to "チャットへ", room_path(roomID), class:"btn btn-lg btn-outline-primary" %>
 <% else %>
   <%= form_with model:room, local:true do |f| %>
     <%= fields_for entry do |e| %>

@@ -8,8 +8,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :description, presence: true, length: { maximum: 140 }
-  validates :name,:school_name, :major, :company_url, presence: true
-  validates :phone_number, presence: true, numericality: {only_integer: true},length: { maximum: 11 }
+
 
 # ---------- ユーザーテーブルにネスト---------
   has_one :company_user, inverse_of: :user

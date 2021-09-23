@@ -1,4 +1,11 @@
-<%= render 'public/searches/form' %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 p-2">
+      <%= render 'public/searches/form' %>
+    </div>
+  </div>
+</div>
+
 <% @posts.each do |post| %>
 <% if post.status == "有効" %>
   <div class="col-md-3" style="float:left">
@@ -15,7 +22,8 @@
       <div class="card-body">
         <h5 class="card-title"><%= post.title %></h5>
         <p><%= post.body.truncate(30) %></p>
-        <%= link_to "詳細", post_path(post), class: "btn btn-outline-success" %>
+        <%= time_ago_in_words(post.created_at) %>前
+        <%= link_to "詳細", post_path(post), class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
