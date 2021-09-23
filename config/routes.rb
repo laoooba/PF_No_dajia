@@ -27,7 +27,6 @@ Rails.application.routes.draw do
     # -------------DM機能------------
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
-    mount ActionCable.server, at: '/cable'
     
      # -------------DM機能------------
     resources :users, only: [:show, :edit, :update, :index] do

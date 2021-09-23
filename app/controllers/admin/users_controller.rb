@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def edit
@@ -18,10 +18,10 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
   def user_params
      params.require(:user).permit(:name, :email, :description, :profile_image, :is_deleted, company_user_attributes: [:phone_number, :company_url], student_user_attributes: [:school_name, :major])
   end
-  
+
 end

@@ -1,31 +1,41 @@
-<table class="table table">
-  <thead>
-    <tr>
-      <th scope="col">氏名</th>
-      <th scope="col">写真</th>
-      <th scope="col">タイトル</th>
-      <th scope="col">ステータス</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <% @posts.each do |post| %>
-  <% if post.status == "有効" %>
-  <tbody>
-    <tr>
-      <th><%= post.user.name %></th>
-      <td>
-        <% if post.image.attached? %>
-          <%= image_tag post.image.variant(resize:'300x300') %>
-        <% else %>
-          <%= image_tag 'heder.png', size: '300x200'%>
+<div class="container mx-auto">
+  <div class="row mx-auto p-3">
+    <div class="col-12 mx-auto shadow-sm rounded">
+      <h1 class="alert alert-primary"><strong>投稿一覧</strong></h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 180px;">氏名</th>
+            <th scope="col" style="width: 180px;">写真</th>
+            <th scope="col" style="width: 180px;">タイトル</th>
+            <th scope="col" style="width: 180px;">ステータス</th>
+            <th scope="col" style="width: 180px;"></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <% if post.status == "有効" %>
+        <tbody>
+        <tr>
+          <th><%= post.user.name %></th>
+          <td>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, style: "object-fit: contain; width: 70px; height: 70px;" %>
+            <% else %>
+              <%= image_tag 'heder.png', style: "object-fit: contain; width: 70px; height: 70px;" %>
+            <% end %>
+          </td>
+          <td><%= post.title %></td>
+          <td><%= post.status %></td>
+          <td><%= link_to "詳細", admin_post_path(post), class: "btn btn-outline-primary mr-1" %></td>
+        </tr>
+        </tbody>
         <% end %>
-      </td>
-      <td><%= post.title %></td>
-      <td><%= post.status %></td>
-      <td><%= link_to "詳細", admin_post_path(post) %></td>
-    </tr>
-  </tbody>
-  <% end %>
-  <% end %>
-</table>
+        <% end %>
+      </table>
+    </div>
+    <%= paginate @posts %>
+  </div>
+</div>
+
+
 

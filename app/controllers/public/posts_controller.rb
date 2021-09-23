@@ -62,6 +62,7 @@ class Public::PostsController < ApplicationController
         flash[:notice]="だげほー"
         redirect_to post_path(@post)
       else
+        @genres = Genre.all
         render :edit
       end
     end

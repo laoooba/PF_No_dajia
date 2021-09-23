@@ -16,7 +16,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
   </head>
-<body class="pb-5">
+<body>
   <heder>
       <% if user_signed_in? %>
         <div class="heder pl-5">
@@ -65,13 +65,13 @@
     <div class="heder pl-5">
       <h1>
         <%= link_to root_path do  %>
-        <%= image_tag "heder.png", style: "object-fit: cover; width: 100px; height: 75px;" %>
+        <%= image_tag "logo1.png", style: "object-fit: cover; width: 100px; height: 75px;" %>
         <% end %>
       </h1>
       <div class="heder_menu">
         <nav>
           <ul>
-            <li class="nav-item">管理者様</li>
+            <li class="nav-item"><i class="fas fa-user-shield"></i></li>
             <li class="nav-item"><%= link_to "会員一覧", admin_users_path, class:"nav-link" %></li>
             <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class:"nav-link" %></li>
             <li class="nav-item"><%= link_to "編集待ち一覧", wait_edit_admin_posts_path, class:"nav-link" %></li>
@@ -84,16 +84,16 @@
     </div>
     <% end %>
   </heder>
-  <main class="mb-5">
+  <main>
        <%= yield %>
   </main>
 
 
 
-<footer class="bg-white  shadow text-center text-lg-start ">
-     <div class="text-center p-3 bg-light">
-       @2021 08 Team JJJ
+<footer class="text-center text-lg-start" style="background-color: #90caf9;">
+     <div class="text-center p-3">
+      <%= link_to "お問い合わせ",  new_contact_path, style: "color: black;" %>
      </div>
-  </footer
+  </footer>
 </body>
 </html>

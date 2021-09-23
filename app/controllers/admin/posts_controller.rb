@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
    before_action :authenticate_admin!
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
   end
   
   def wait_edit
-    @posts = Post.all
+    @posts = Post.where.not(status: "有効").page(params[:page]).per(10)
   end
 
   private
