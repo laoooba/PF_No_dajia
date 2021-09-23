@@ -1,7 +1,5 @@
-<div class="container mx-auto" style="width: 200px;">
-  <div class="row">
-    <h1><strong>お問い合わせ</strong></h1>
-  </div>
+<div class="container mx-auto">
+  <h1 class="text-center"><strong>お問い合わせ</strong></h1>
 </div>
 <div class="container mx-auto">
   <div class="row mx-auto px-auto">
@@ -9,7 +7,7 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>名前</th>
+            <th style="width:200px;">名前</th>
             <td><%= @contact.name %></td>
           </tr>
         </tbody>
@@ -17,7 +15,7 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>メールアドレス</th>
+            <th style="width:200px;">メールアドレス</th>
             <td><%= @contact.email %></td>
           </tr>
         </tbody>
@@ -25,7 +23,7 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>タイトル</th>
+            <th style="width:200px;">タイトル</th>
             <td><%= @contact.title %></td>
           </tr>
         </tbody>
@@ -33,7 +31,7 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>本文</th>
+            <th style="width:200px;">本文</th>
             <td><%= @contact.body %></td>
           </tr>
         </tbody>
@@ -46,23 +44,17 @@
       <table class="table">
         <tbody>
           <tr>
-            <td><%= f.submit "お問い合わせを送信する", class: "btn btn-lg btn-outline-success" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
-      <%= form_with model: @contact, url: back_path, method: :post ,local:true do |f| %>
-      <%= f.hidden_field :name, value: @contact.name %>
-      <%= f.hidden_field :email, value: @contact.email %>
-      <%= f.hidden_field :title, value: @contact.title %>
-      <%= f.hidden_field :body, value: @contact.body %>
-      <table class="table">
-        <tbody>
-          <tr>
+            <td><%= f.submit "お問い合わせを送信する", class: "btn btn-lg btn-outline-primary" %></td>
+            <%= form_with model: @contact, url: back_path, method: :post ,local:true do |f| %>
+            <%= f.hidden_field :name, value: @contact.name %>
+            <%= f.hidden_field :email, value: @contact.email %>
+            <%= f.hidden_field :title, value: @contact.title %>
+            <%= f.hidden_field :body, value: @contact.body %>
             <td><%= f.submit "入力画面に戻る", class: "btn btn-lg btn-outline-success" %></td>
           </tr>
         </tbody>
       </table>
+      <% end %>
       <% end %>
     </div>
   </div>

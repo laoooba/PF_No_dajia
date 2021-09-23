@@ -55,8 +55,9 @@
           <%= company.text_field :phone_number, autocomplete: "off", class:"form-control" %>
         </div>
         <% end %>
+      <% end %>
         <div class="form-group">
-          <label for="inputPhoneNumber">学校名</label>
+          <label for="inputIsDeleted">ステータス</label>
           <% if @user.is_deleted == true %>
             <%= f.radio_button :is_deleted, :false %>
             <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
@@ -69,9 +70,8 @@
             <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
           <% end %>
         </div>
-      <% end %>
       <div class="form-group">
-        <%= f.submit "更新", class:"btn btn-success" %>
+        <%= f.submit "更新", class: "btn btn-outline-primary" %>
       </div>
         <% end %>
     </div>

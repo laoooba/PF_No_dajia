@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       root_path
     else
-      root_path
+      admin_users_path
     end
   end
   

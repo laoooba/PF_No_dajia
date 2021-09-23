@@ -1,21 +1,40 @@
 <div class="container">
+  <div class="row">
+    <div class="col-12 p-2">
+      <p class="text-center">
+        <i class="fas fa-hand-point-left fa-7x faa-vertical animated"></i></i>
+        <i class="far fa-angry fa-7x faa-ring animated" style="color: #FF4D6D;"></i></i>
+        <i class="fas fa-hand-point-right fa-7x faa-vertical animated"></i></i>
+        </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 p-2">
+      <p class="text-center">
+        <i class="fas fa-socks fa-7x faa-vertical animated"></i></i></i>
+        </p>
+    </div>
+  </div>
+</div>
 
-  <%= form_with model:@admin, url: session_path(resource_name), class: "form-signin", local:true do |f| %>
-  <i class="fab fa-airbnb fa-5x"></i>
-    <div class="field mx-auto">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+    <div class="row">
+    <%= form_with model:@admin, url: session_path(resource_name), class: "form-signin", local:true do |f| %>
+      <div class="form-group">
+      <label for="InputEmail1">メールアドレス</label>
+      <%= f.email_field :email, autofocus: true,class:"form-control form-control-lg", autocomplete: "email" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+    <div class="form-group">
+      <label for="InputPassword">パスワード</label>
+      <%= f.password_field :password,class:"form-control form-control-lg", autocomplete: "current-password" %>
     </div>
-
-    <div class="actions p-2">
-      <%= f.submit "Log in", class:"btn btn-success" %>
+    
+    <div class="form-group">
+      <%= f.submit "ログイン", class:"btn btn-outline-primary" %>
     </div>
   <% end %>
-
-  
+  </div>
 </div>
