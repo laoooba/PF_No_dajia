@@ -19,14 +19,16 @@
         <%= f.collection_select :genre_id, @genres, :id, :title,{ prompt: "--選択してください--"}, class:"form-control form-control-lg" %>
         </div>
 
-        <div class="form-group col-4">
-        <label for="inputTitle">タグを選んでね</label>
+        <div class="form-group col-4 flex-row">
+        <label for="inputTitle">タグを選んでね</label><br>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title) do |t| %>
-          <%= t.label { t.text } %>
-          <%= t.check_box do %>
-            <%= t.check_box + t.text %>
-          <% end %>
-          <% end %>
+          <p class="btn btn-outline-info">
+            <%= t.check_box  do %>
+              <%= t.text + t.check_box %>
+            <% end %>
+            <%= t.label { t.text } %>
+            <% end %>
+          </p>
         </div>
       </div>
 

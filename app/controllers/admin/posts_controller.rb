@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
   end
   
   def wait_edit
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.where.not(status: "有効").page(params[:page]).per(10)
   end
 
   private
