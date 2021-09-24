@@ -1,21 +1,17 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
     @users = User.order(created_at: :desc).page(params[:page]).per(6)
   end
-
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
     @edit_posts = @user.posts.where.not(status: "有効").order(created_at: :desc).page(params[:page]).per(6)
-    
-
     # ------------------DM機能------------------
     @currentUserEntry = Entry.where(user_id: current_user.id)
-    @userEntry =Entry.where(user_id: @user.id)
+    @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @currentUserEntry.each do |cue|
         @userEntry.each do |ue|
@@ -39,7 +35,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] ="だげほー"
+      flash[:notice] = "だげほー"
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -55,19 +51,15 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path, notice: "退会しました"
   end
-  
+
   def dms
     @user = User.find(params[:id])
     @rooms = @user.rooms
-
   end
-
-
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :description, :profile_image, company_user_attributes: [:phone_number, :company_url], student_user_attributes: [:school_name, :major])
   end
-
 end

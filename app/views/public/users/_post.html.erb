@@ -18,9 +18,9 @@
           <% if post.status == "有効" %>
           <tr>
             <td><% if post.image.attached? %>
-                <%= image_tag post.image.variant(resize:'200x100') %>
+                <%= image_tag post.image, style: "object-fit: cover; width: 200px; height: 100px;" %>
                 <% else %>
-                <%= image_tag 'logo.png', size: "200x100" %>
+                <%= image_tag 'logo.png', style: "object-fit: cover; width: 200px; height: 100px;" %>
                 <% end %>
             </td>
             <td><h5><%= link_to post.title, post_path(post) %></h5></td>

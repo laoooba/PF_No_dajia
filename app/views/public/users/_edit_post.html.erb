@@ -17,12 +17,12 @@
         <tbody>
           <tr>
             <td><% if post.image.attached? %>
-                <%= image_tag post.image.variant(resize:'100x100') %>
+                <%= image_tag post.image, style: "object-fit: cover; width: 200px; height: 100px;" %>
                 <% else %>
-                <%= image_tag 'logo.png', size: "200x100" %>
+                <%= image_tag 'logo.png', style: "object-fit: cover; width: 200px; height: 100px;" %>
                 <% end %>
             </td>
-            <td><%= link_to post.title, post_path(post) %></td>
+            <td><h5><%= link_to post.title, post_path(post) %></h5></td>
             <td><%= post.genre.title %></td>
             <td><%= post.status %></td>
             <td><%= link_to '編集', edit_post_path(post.id), class:"btn btn-outline-success" %></td>

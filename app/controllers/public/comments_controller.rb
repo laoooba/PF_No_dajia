@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:create, :destroy]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
@@ -8,14 +9,14 @@ class Public::CommentsController < ApplicationController
     @comment.save
     @post.create_notification_comment(current_user, @comment.id)
     render :index
-  end 
-  
+  end
+
   def destroy
     @post = Post.find(params[:post_id])
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     render :index
   end
-  
+
   private
 
   def comment_params

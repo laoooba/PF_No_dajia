@@ -27,12 +27,6 @@
   padding: 0;
 }
 
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
-}
 
 
 .heder{
@@ -88,9 +82,13 @@ li{
 
 
 // ---------------signin-----------------------------
-main { 
-  margin-bottom: 50px;
-  
+
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
 }
 
 .signin__visual{

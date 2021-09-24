@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
     if @user
       if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
         flash[:alert] = '退会済みです。'
-        redirect_to new_user_session_path 
+        redirect_to new_user_session_path
       end
     end
   end

@@ -15,14 +15,14 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] ="だげほー"
+      flash[:notice] = "だげほー"
       redirect_to post_path(@post)
     else
-    if current_user.student_user
-      @genres = Genre.where.not(id: 1)
-    else
-      @genres = Genre.all
-    end
+      if current_user.student_user
+        @genres = Genre.where.not(id: 1)
+      else
+        @genres = Genre.all
+      end
       render :new
     end
   end
@@ -30,7 +30,6 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc).page(params[:page]).per(8)
   end
-
 
   def show
     @post = Post.find(params[:id])
@@ -52,21 +51,20 @@ class Public::PostsController < ApplicationController
     if @post.status == "編集待ち"
       @post.status = "結果待ち"
       if @post.update(post_params)
-        flash[:notice]="だげほー"
+        flash[:notice] = "だげほー"
         redirect_to post_path(@post)
       else
         render :edit
       end
     else
       if @post.update(post_params)
-        flash[:notice]="だげほー"
+        flash[:notice] = "だげほー"
         redirect_to post_path(@post)
       else
         @genres = Genre.all
         render :edit
       end
     end
-
   end
 
   def destroy
@@ -74,7 +72,6 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-
 
   private
 

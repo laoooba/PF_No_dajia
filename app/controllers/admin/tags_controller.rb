@@ -1,12 +1,12 @@
 class Admin::TagsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @tags = Tag.all
     @tag = Tag.new
-  end 
-  
-  def create 
+  end
+
+  def create
     @tag = Tag.new(tag_params)
     if @tag.save
       redirect_to admin_tags_path, notice: "ジャンルを追加しました"
@@ -16,24 +16,25 @@ class Admin::TagsController < ApplicationController
       flash.now[:alert] = "ジャンルの追加に失敗しました"
       render :index
     end
-  end 
-  
+  end
+
   def edit
     @tag = Tag.find(params[:id])
-  end 
-  
-  def update 
+  end
+
+  def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-       redirect_to admin_tags_path, notice: "変更を保存しました"
+      redirect_to admin_tags_path, notice: "変更を保存しました"
     else
       flash.now[:alert] = "変更の保存に失敗しました"
       render :edit
     end
-  end 
-  
+  end
+
   private
+
   def tag_params
     params.require(:tag).permit(:title)
-  end 
+  end
 end
