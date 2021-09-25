@@ -16,11 +16,11 @@
       <div class="card-body">
         <h5 class="card-title"><%= user.name %></h5>
         <p class="card-text"><small><%= user.description %></small></p>
-        <p class="card-text">フォロワー数: <%= user.followers.count %></p>
+        <p class="card-text">フォロワー: <%= user.followers.count %></p>
         <% if user.student_user.present? %>
         <p class="card-text"><%= user.student_user.school_name %><i class="fab fa-acquisitions-incorporated p-2"></i><%= user.student_user.major %></p>
         <% else %>
-        <p class="card-text">企業HP<%= user.company_user.company_url %></p>
+        <p class="card-text"><i class="fas fa-link pr-2"></i><%= user.company_user.company_url %></p>
         <p class="card-text"><i class="fas fa-phone pr-2"></i><%= user.company_user.phone_number %></p>
         <% end %>
         <p class="card-text"><%= render 'public/relationships/follow-btn', user: user %><%= link_to "詳細", user_path(user), class: "btn btn-lg btn-outline-success" %></p>

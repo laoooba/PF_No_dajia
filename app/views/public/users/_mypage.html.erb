@@ -1,0 +1,50 @@
+<div class="container mx-auto hight">
+  <div class="row mx-auto p-3">
+    <div class="col-12 mx-auto">
+      <div class="card  shadow-sm rounded">
+        <div class="row no-gutters">
+          <div class="col-md-4 p-3">
+            <% if user.profile_image.attached? %>
+              <%= image_tag user.profile_image,  style: "object-fit: cover; width: 100%; height: 100%;" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', style: "object-fit: cover; width: 100%; height: 100%;" %>
+            <% end %>
+          </div>
+          <div class="col-md-8 p-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.name %></h5>
+              <p class="card-text"><%= user.description %></p>
+              <p class="card-text">
+                <%= link_to user_followings_path(user) do %>
+              フォロー: <%= user.followings.count %>
+              <% end %>
+              <%= link_to user_followers_path(user) do %>
+              フォロワー: <%= user.followers.count %>
+              <% end %>
+              </p>
+              <% if user.student_user.present? %>
+              <p class="card-text"><%= user.student_user.school_name %><i class="fab fa-acquisitions-incorporated p-2"></i><%= user.student_user.major %></p>
+              <% else %>
+              <p class="card-text"><i class="fas fa-link pr-2"></i><%= user.company_user.company_url %></p>
+              <p class="card-text"><i class="fas fa-phone pr-2"></i><%= user.company_user.phone_number %></p>
+              <% end %>
+              <% unless @user == current_user %>
+              <p class="card-text">
+                <%= render 'public/relationships/follow-btn', user: @user %>
+                <%= render 'public/rooms/dm-btn', user: @user, isRoom: @isRoom, roomID: @roomID, room: @room, entry: @entry %>
+                <%= link_to "いいね一覧", favorites_user_path(user), class:"btn btn-lg btn-outline-info" %>
+              </p>
+              <% else %>
+              <p class="card-text">
+                <%= link_to "編集", edit_user_path(user), class:"btn btn-lg btn-outline-primary" %>
+                <%= link_to "いいね一覧", favorites_user_path(user), class:"btn btn-lg btn-outline-info" %>
+              </p>
+              <% end %>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
