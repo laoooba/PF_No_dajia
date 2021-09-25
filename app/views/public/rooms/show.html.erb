@@ -16,7 +16,7 @@
                     <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
                   <% end %>
                 </div>
-                <div class="pr-2 pl-1"> 
+                <div class="pr-2 pl-1">
                     <p class="font-weight-bold"><%= m.content %></p>
                 </div>
             </div>
@@ -39,6 +39,7 @@
         </div>
         <div id="message">
           <%= form_with model: @message, local:true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control form-control-lg" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <p class="p-1"><%= f.submit "投稿",class:"btn btn-outline-success"%></p>

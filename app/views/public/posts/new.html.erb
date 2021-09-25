@@ -4,6 +4,7 @@
       <h1>新規投稿</h1>
       <%= form_with model:@post, local:true do |f| %>
       <%= render 'layouts/error_messages', model: @post %>
+      
       <div class="form-group">
         <label for="inputTitle">タイトル</label>
         <%= f.text_field :title, autofocus: true, placeholder:"タイトル", class:"form-control form-control-lg" %>

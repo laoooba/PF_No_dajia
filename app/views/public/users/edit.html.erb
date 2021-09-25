@@ -2,24 +2,13 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>マイページ編集</h1>
-      <div class="error_explanation">
-        <% if @user.errors.any? %>
-        <div class="alert">
-          <h1><%= @user.errors.count %>errors prohibited this obj from being saved:</h1>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-        <% end %>
-      </div>
       <%= form_with model:@user, local:true do |f| %>
+      <%= render 'layouts/error_messages', model: @user %>
       <div class="form-group">
         <label for="inputProfileImage">画像</label>
         	<%= f.file_field :profile_image, class:"form-control" %>
       </div>
-      
+
       <div class="form-group">
         <label for="inputName">名前</label>
         <%= f.text_field :name, autofocus: true, placeholder:"名前", class:"form-control" %>
@@ -36,7 +25,7 @@
           <label for="inputSchoolName">学校名</label>
           <%= student.text_field:school_name, autocomplete: "off", class:"form-control" %>
         </div>
-    
+
          <div class="form-group">
           <label for="inputMajor">学科名</label>
           <%= student.text_field :major, autocomplete: "off", class:"form-control" %>
@@ -49,7 +38,7 @@
           <label for="inputCompanyUrl">企業URL</label>
           <%= company.text_field :company_url, autocomplete: "off", class:"form-control" %>
         </div>
-        
+
         <div class="form-group">
           <label for="inputPhoneNumber">電話番号</label>
           <%= company.text_field :phone_number, autocomplete: "off", class:"form-control" %>
@@ -61,7 +50,7 @@
         <%= link_to "退会", unsubscribe_user_path(@user), class:"btn btn-outline-danger" %>
       </div>
         <% end %>
-        
+
     </div>
   </div>
 </div>
