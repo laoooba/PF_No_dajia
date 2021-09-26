@@ -2,12 +2,12 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.order(created_at: :desc).page(params[:page]).per(6)
+    @users = User.includes([:profile_image_attachment, :student_user, :company_user]).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
+    @posts = @user.posts.includes([:image_attachment, :genre]).order(created_at: :desc).page(params[:page]).per(6)
     @edit_posts = @user.posts.where.not(status: "有効").order(created_at: :desc).page(params[:page]).per(6)
     # ------------------DM機能------------------
     @currentUserEntry = Entry.where(user_id: current_user.id)

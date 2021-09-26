@@ -7,33 +7,7 @@
     <% end %>
   </div>
 </div>
-<div class="main p-5">
-  <div class="container-fluid">
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-           <h1 class="alert alert-primary"><strong>1</strong></h1>
-          <h5 class="card-title">台湾での生活</h5>
-          <p class="card-text">アルバイト情報や勉強の仕方イベント情報などみんなで共有して最高の留学生活にしましょう</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h1 class="alert alert-primary"><strong>1</strong></h1>
-          <h5 class="card-title">コミュニティーを広げよう</h5>
-          <p class="card-text">地域やタグを使って同じ志を持った人を探し、連絡を取って仲良くなりましょう</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h1 class="alert alert-primary"><strong>1</strong></h1>
-          <h5 class="card-title">積極的に投稿・質問しよう</h5>
-          <p class="card-text">留学の４年間はあっという間に過ぎていきます。後悔しないためにも情報交換を積極的に行い、有意義に過ごしましょう。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'public/homes/about' %>
 <% if user_signed_in? %>
 <div class= "index">
   <div class="container-fluid">

@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "だげほー"
+      flash[:primary] = "投稿しました"
       redirect_to post_path(@post)
     else
       if current_user.student_user
@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(8)
+    @posts = Post.includes([:image_attachment]).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show

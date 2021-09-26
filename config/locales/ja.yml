@@ -12,6 +12,7 @@ ja:
       contact: お問い合わせ
       company_user: 企業
       student_user: 学生
+      message: DM
 
 
     attributes:
@@ -21,7 +22,8 @@ ja:
         email: メールアドレス
         encrypted_password: パスワード（６文字以上）
         reset_password_token: パスワード確認
-        description: 一言
+        password: パスワード
+        description: 紹介文
         created_at: 管理者登録日時
         updated_at: 管理者更新日時
       post:
@@ -53,94 +55,12 @@ ja:
         major: 学科名
         created_at: 登録日時
         updated_at: 更新日時
-      order_item:
+      message:
         id: ID
-        quantity: 数量
-        price: 注文時価格(税込)
-        work_status: 制作ステータス
-        created_at: 会員登録日時
-        updated_at: 会員更新日時
-      shipping_address:
-        id: ID
-        name: 宛名
-        postal_code: 郵便番号
-        address: 住所
-        created_at: 会員登録日時
-        updated_at: 会員更新日時
-      admin:
-        id: ID
-        email: メールアドレス
-        password: パスワード
-        created_at: 管理者登録日時
-        updated_at: 管理者更新日時
-  enums:
-    order_items:
-      work_status:
-        aaa: 着手不可
-        bbb: 制作待ち
-        ccc: 製作中
-        ddd: 制作完了
-    orders:
-      status:
-        eee: 入金待ち
-        fff: 入金確認
-        ggg: 製作中
-        hhh: 発送準備中
-        iii: 発送済み
-  date:
-    abbr_day_names:
-    - 日
-    - 月
-    - 火
-    - 水
-    - 木
-    - 金
-    - 土
-    abbr_month_names:
-    -
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
-    day_names:
-    - 日曜日
-    - 月曜日
-    - 火曜日
-    - 水曜日
-    - 木曜日
-    - 金曜日
-    - 土曜日
-    formats:
-      default: "%Y/%m/%d"
-      long: "%Y年%m月%d日(%a)"
-      short: "%m/%d"
-    month_names:
-    -
-    - 1月
-    - 2月
-    - 3月
-    - 4月
-    - 5月
-    - 6月
-    - 7月
-    - 8月
-    - 9月
-    - 10月
-    - 11月
-    - 12月
-    order:
-    - :year
-    - :month
-    - :day
-  datetime:
+        content: コメント
+        created_at: 登録日時
+        updated_at: 更新日時
+  etime:
     distance_in_words:
       about_x_hours:
         one: 約1時間
@@ -225,63 +145,4 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
-  number:
-    currency:
-      format:
-        delimiter: ","
-        format: "%n%u"
-        precision: 0
-        separator: "."
-        significant: false
-        strip_insignificant_zeros: false
-        unit: 円
-    format:
-      delimiter: ","
-      precision: 3
-      separator: "."
-      significant: false
-      strip_insignificant_zeros: false
-    human:
-      decimal_units:
-        format: "%n %u"
-        units:
-          billion: 十億
-          million: 百万
-          quadrillion: 千兆
-          thousand: 千
-          trillion: 兆
-          unit: ''
-      format:
-        delimiter: ''
-        precision: 3
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n%u"
-        units:
-          byte: バイト
-          eb: EB
-          gb: GB
-          kb: KB
-          mb: MB
-          pb: PB
-          tb: TB
-    percentage:
-      format:
-        delimiter: ''
-        format: "%n%"
-    precision:
-      format:
-        delimiter: ''
-  support:
-    array:
-      last_word_connector: "、"
-      two_words_connector: "、"
-      words_connector: "、"
-  time:
-    am: 午前
-    formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
-    pm: 午後
+ 

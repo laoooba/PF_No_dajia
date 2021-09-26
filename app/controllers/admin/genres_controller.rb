@@ -2,7 +2,8 @@ class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @genres = Genre.all
+    @genres = Genre.includes([:image_attachment])
+    @genres = Genre.with_attached_image
     @genre = Genre.new
   end
 

@@ -1,9 +1,10 @@
 <div class="container">
   <h1 class="text-center"><i class="far fa-handshake faa-float animated"></i></h1>
+  <%= render partial: 'layouts/flash' %>
 </div>
 <div class="container bg-light">
   <div class="wrapper p-5">
-    <div class="main">
+    <div class="main-message">
         <div class="px-2 scroll">
               <% if @messages.present? %>
               <% @messages.each do |m| %>
@@ -39,7 +40,6 @@
         </div>
         <div id="message">
           <%= form_with model: @message, local:true do |f| %>
-          <%= render 'layouts/error_messages', model: f.object %>
           <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control form-control-lg" %>
           <%= f.hidden_field :room_id, value: @room.id %>
           <p class="p-1"><%= f.submit "投稿",class:"btn btn-outline-success"%></p>
@@ -48,3 +48,12 @@
     </div>
   </div>
 </div>
+
+<script>
+
+const $scrollAuto = $('.scroll');
+
+$scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 400)}, 'fast')
+
+</script>
+

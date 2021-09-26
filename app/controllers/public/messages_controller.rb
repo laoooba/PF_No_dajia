@@ -4,6 +4,11 @@ class Public::MessagesController < ApplicationController
   def create
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.create(message_params)
+      if @message.content.present?
+        flash[:primary] = "コメントを送信しました"
+      else
+        flash[:danger] = "コメントを入力してください"
+      end
     end
     redirect_to room_path(@message.room_id)
   end

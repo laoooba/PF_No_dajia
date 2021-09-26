@@ -1,7 +1,9 @@
+<div class="container mt-2">
+    <h1 class="alert alert-primary"><strong>新規投稿</strong></h1>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 mx-auto">
-      <h1>新規投稿</h1>
       <%= form_with model:@post, local:true do |f| %>
       <%= render 'layouts/error_messages', model: @post %>
       
@@ -23,7 +25,7 @@
         <div class="form-group col-4 flex-row">
         <label for="inputTitle">タグを選んでね</label><br>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title) do |t| %>
-          <p class="btn btn-outline-info">
+          <p class="btn btn-outline-info py-0">
             <%= t.check_box  do %>
               <%= t.text + t.check_box %>
             <% end %>
