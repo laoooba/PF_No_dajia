@@ -1,0 +1,31 @@
+<% if messages.present? %>
+<% messages.each do |m| %>
+<% unless m.user == current_user %>
+<div class="d-flex align-items-center">
+    <div class="text-left p-1">
+      <% if m.user.profile_image.attached? %>
+        <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
+      <% end %>
+    </div>
+    <div class="pr-2 pl-1">
+        <p class="font-weight-bold"><%= m.content %></p>
+    </div>
+</div>
+<% else %>
+<div class="d-flex align-items-center text-right justify-content-end ">
+    <div class="pr-2">
+        <p class="font-weight-bold"><%= m.content %></p>
+    </div>
+    <div class="p-1">
+      <% if m.user.profile_image.attached? %>
+        <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
+      <% end %>
+    </div>
+</div>
+<% end %>
+<% end %>
+<% end %>

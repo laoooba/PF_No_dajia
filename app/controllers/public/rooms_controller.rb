@@ -12,7 +12,7 @@ class Public::RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room.check_messages_notification(current_user)
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @messages = @room.messages
+      @messages = @room.messages.includes([:user])
       @message = Message.new
       @entries = @room.entries
     else

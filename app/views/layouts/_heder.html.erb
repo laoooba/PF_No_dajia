@@ -7,33 +7,43 @@
   </h1>
   <div class="heder_menu pr-5">
     <nav>
-      <ul>
-        <li class="nav-item mt-2" style="color: #0D47A1;"><%= current_user.name %>さん</li>
+      <ul class="align-items-center">
+        <li class="fa-2x" style="color: #0D47A1;"><%= current_user.name %>さん</li>
         <li class="nav-item">
           <%= link_to user_path(current_user) do %>
-          <i class="fas fa-user fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+          <i class="fas fa-user fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+            <small>Mypage</small>
+          </i>
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to new_post_path do %>
-          <i class="far fa-plus-square fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+          <i class="far fa-plus-square fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+            <small>New</small>
+          </i>
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to posts_path do %>
-          <i class="fas fa-indent fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+          <i class="fas fa-indent fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+            <small>Post</small>
+          </i>
           <% end %>
           </li>
         <li class="nav-item"><%= render 'public/rooms/icon', class:"nav-link" %></li>
         <li class="nav-item">
           <%= link_to users_path do %>
-          <i class="fas fa-users fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+          <i class="fas fa-users fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+            <small>User</small>
+          </i>
           <% end %>
           </li>
         <li class="nav-item"><%= render 'public/notifications/icon', class:"nav-link" %></li>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+          <i class="fas fa-sign-out-alt fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+            <small>Logout</small>
+          </i>
           <% end %>
           </li>
       </ul>

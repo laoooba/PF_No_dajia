@@ -49,14 +49,15 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path, notice: "退会しました"
+    flash[:primary] = "Thank you for using"
+    redirect_to root_path
   end
 
   def dms
     @user = User.find(params[:id])
-    @rooms = @user.rooms.order(created_at: :desc).page(params[:page]).per(9)
+    @rooms = @user.rooms.includes([:entries,:users]).order(created_at: :desc).page(params[:page]).per(9)
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     @favorites = @user.favorites.order(created_at: :desc).page(params[:page]).per(9)

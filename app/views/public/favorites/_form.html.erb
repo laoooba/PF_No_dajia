@@ -7,7 +7,7 @@
 <% else %>
   <p>
     <%= link_to post_favorites_path(post), method: :post, remote: true do %>
-      <i class="far fa-heart fa-2x" style="color:#1565C0;"></i><%= post.favorites.count %>
+      <i class="far fa-heart fa-2x" style="color:#1565C0; text-decoration: none;"><small><%= post.favorites.count  %></small></i>
     <% end %>
   </p>
 <% end %>

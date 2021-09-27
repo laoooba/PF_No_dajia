@@ -1,7 +1,11 @@
 <%= link_to dms_user_path(current_user) do %>
 <% if current_user.unchecked_messages? %>
-  <i class="fas fa-comment-dots fa-2x faa-tada animated" style="color: #0D47A1;"></i>
+  <i class="fas fa-comment-dots fa-2x faa-tada animated" style="color: #0D47A1;">
+    <small>DM</small>
+  </i>
 <% else %>
-  <i class="far fa-comment-dots fa-2x faa-pulse animated-hover" style="color: #E3F2FD;"></i>
+  <i class="far fa-comment-dots fa-2x faa-pulse animated-hover" style="color: #E3F2FD;">
+    <small>DM</small>
+  </i>
 <% end %>
 <% end %>

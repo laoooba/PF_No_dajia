@@ -5,55 +5,17 @@
 <div class="container bg-light">
   <div class="wrapper p-5">
     <div class="main-message">
-        <div class="px-2 scroll">
-              <% if @messages.present? %>
-              <% @messages.each do |m| %>
-              <% unless m.user == current_user %>
-            <div class="d-flex align-items-center">
-                <div class="text-left p-1">
-                  <% if m.user.profile_image.attached? %>
-                    <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
-                  <% end %>
-                </div>
-                <div class="pr-2 pl-1">
-                    <p class="font-weight-bold"><%= m.content %></p>
-                </div>
-            </div>
-            <% else %>
-            <div class="d-flex align-items-center text-right justify-content-end ">
-                <div class="pr-2">
-                    <p class="font-weight-bold"><%= m.content %></p>
-                </div>
-                <div class="p-1">
-                  <% if m.user.profile_image.attached? %>
-                    <%= image_tag m.user.profile_image, style: "object-fit: contain; width: 70px; height: 70px;" %>
-                  <% else %>
-                    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 70px; height: 70px;" %>
-                  <% end %>
-                </div>
-            </div>
-            <% end %>
-            <% end %>
-            <% end %>
+        <div class="px-2 scroll" id ="message-index">
+          <%= render 'public/rooms/index', messages: @messages %>
         </div>
         <div id="message">
-          <%= form_with model: @message, local:true do |f| %>
-          <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control form-control-lg" %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-          <p class="p-1"><%= f.submit "投稿",class:"btn btn-outline-success"%></p>
-          <% end %>
+          <%= render 'public/rooms/form', message: @message, room: @room %>
         </div>
-    </div>
   </div>
 </div>
 
 <script>
-
-const $scrollAuto = $('.scroll');
-
-$scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 400)}, 'fast')
-
+  const $scrollAuto = $('.scroll');
+  $scrollAuto.animate({scrollTop: ($scrollAuto[0].scrollHeight + 400)}, 'fast')
 </script>
 
