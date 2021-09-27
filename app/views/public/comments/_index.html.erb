@@ -1,16 +1,25 @@
 <% post.comments.each do |comment| %>
-  <% if comment.user.profile_image.attached? %>
-    <%= image_tag comment.user.profile_image, style: "object-fit: contain; width: 100px; height: 100px;" %>
-  <% else %>
-    <%= image_tag 'no_image.jpg', style: "object-fit: contain; width: 100px; height: 100px;" %>
-  <% end %>
-  <%= comment.user.name %>
-  <p class="pl-3"><%= comment.comment %></p>
-  <% if comment.user == current_user %>
-  <%= link_to post_comment_path(post_id: comment.post, id: comment), method: :delete, remote: true do %>
-  <i class="far fa-trash-alt" style="color: red;"></i><br>
-  <% end %></i>
-  <% else %>
-  <br>
-  <% end %>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+      <li class="nav-item  m-0 ml-2">
+        <a><%= comment.user.name %></a>
+      </li>
+      <li class="nav-item ml-5">
+        <small><%= time_ago_in_words(comment.created_at) %>前</small>
+      </li>
+      <li class="nav-item ml-2">
+        <% if comment.user == current_user %>
+        <%= link_to post_comment_path(post_id: comment.post, id: comment), method: :delete, remote: true do %>
+        <i class="far fa-trash-alt" style="color: red;"></i><br>
+        <% end %></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= comment.comment %></p>
+  </div>
+</div>
 <% end %>

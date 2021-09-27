@@ -1,0 +1,5 @@
+<%= form_with model: message, remo:true do |f| %>
+<%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-control form-control-lg" %>
+<%= f.hidden_field :room_id, value: room.id %>
+<p class="p-1"><%= f.submit "投稿",class:"btn btn-outline-success"%></p>
+<% end %>

@@ -1,0 +1,3 @@
+$('#message-index').html("<%= j(render 'public/rooms/index', messages: @messages) %>");
+$('.scroll').animate({ scrollTop: $('.scroll')[0].scrollHeight});
+$("#message_content").val('')
