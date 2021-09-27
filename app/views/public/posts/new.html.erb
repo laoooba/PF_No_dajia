@@ -1,36 +1,39 @@
+<div class="container mt-2">
+    <h1 class="alert alert-primary"><strong>新規投稿</strong></h1>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 mx-auto">
-      <h1>新規投稿</h1>
       <%= form_with model:@post, local:true do |f| %>
       <%= render 'layouts/error_messages', model: @post %>
+      
       <div class="form-group">
         <label for="inputTitle">タイトル</label>
         <%= f.text_field :title, autofocus: true, placeholder:"タイトル", class:"form-control form-control-lg" %>
       </div>
       <div class="row">
-        <div class="form-group col-4">
+        <div class="form-group col-6">
         <label for="inputImage">画像</label>
         	<%= f.file_field :image, class:"form-control form-control-lg" %>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-6">
         <label for="inputTitle">エリアを選んでね</label>
         <%= f.collection_select :genre_id, @genres, :id, :title,{ prompt: "--選択してください--"}, class:"form-control form-control-lg" %>
         </div>
-
-        <div class="form-group col-4 flex-row">
+      </div>
+      
+      <div class="form-group">
         <label for="inputTitle">タグを選んでね</label><br>
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :title) do |t| %>
-          <p class="btn btn-outline-info">
+          <div class="btn btn-outline-info py-0 m-1">
             <%= t.check_box  do %>
               <%= t.text + t.check_box %>
             <% end %>
             <%= t.label { t.text } %>
-            <% end %>
-          </p>
+          </div>
+          <% end %>
         </div>
-      </div>
 
       <div class="form-group">
         <label for="inputBody">本文</label>

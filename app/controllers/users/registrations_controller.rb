@@ -9,16 +9,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @user.build_student_user
   end
-   
+
   def company
     @user = User.new
     @user.build_company_user
   end
-  
+
   def create
-  super
-  user = User.new(configure_permitted_parameters)
-  user.save
+    super
+    user = User.new(configure_permitted_parameters)
+    user.save
   end
 
   # GET /resource/edit
@@ -45,13 +45,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
-  
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

@@ -1,39 +1,13 @@
-<div class="main-visual">
-  <div class="main-visual__content--singin ">
+<%= render partial: 'layouts/flash' %>
+<div class="main-visual"></div>
+<div class="main-visual__content--singin pb-5">
     <% unless user_signed_in? || admin_signed_in? %>
         <%= link_to "ログイン", new_user_session_path, class:"btn btn-outline-primary" %>
         <%= link_to "学生の方", new_user_registration_path, class:"btn btn-outline-primary" %>
         <%= link_to "企業の方", new_company_path, class:"btn btn-outline-primary" %>
     <% end %>
   </div>
-</div>
-<div class="main p-5">
-  <div class="container">
-    <div class="card-deck">
-      <div class="card">
-        <div class="card-body">
-          <i class="fas fa-american-sign-language-interpreting fa-7x"></i>
-          <h5 class="card-title">台湾での生活</h5>
-          <p class="card-text">アルバイト情報や勉強の仕方イベント情報などみんなで共有して最高の留学生活にしましょう</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <i class="fas fa-atom fa-7x"></i>
-          <h5 class="card-title">コミュニティーを広げよう</h5>
-          <p class="card-text">同じ志を持った者同士仲良くしましょう</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <i class="fab fa-angrycreative fa-7x"></i>
-          <h5 class="card-title">積極的に質問しよう</h5>
-          <p class="card-text">礼儀を大切に質問しましょう</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'public/homes/about' %>
 <% if user_signed_in? %>
 <div class= "index">
   <div class="container-fluid">
@@ -59,7 +33,7 @@
         </div>
         <div>
           <% @tags.each do |tag| %>
-          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-info" %>
+          <%= link_to tag.title, tag_path(tag), class:"btn btn-outline-info m-1" %>
           <% end %>
         </div>
       </div>

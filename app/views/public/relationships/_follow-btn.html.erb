@@ -1,4 +1,3 @@
-
 <% if current_user.following?(user) %>
   <%= link_to "Unfollow", user_relationships_path(user), class:"btn btn-lg btn-outline-danger" , method: :delete %>
 <% else %>

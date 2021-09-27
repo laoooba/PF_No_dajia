@@ -20,8 +20,8 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-  def user_params
-     params.require(:user).permit(:name, :email, :description, :profile_image, :is_deleted, company_user_attributes: [:phone_number, :company_url], student_user_attributes: [:school_name, :major])
-  end
 
+  def user_params
+    params.require(:user).permit(:name, :email, :description, :profile_image, :is_deleted, company_user_attributes: [:phone_number, :company_url], student_user_attributes: [:school_name, :major])
+  end
 end

@@ -59,3 +59,4 @@ document.addEventListener("turbolinks:load", () => {
 });
 });
 })
+
