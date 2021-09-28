@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @favorites = @user.favorites.order(created_at: :desc).page(params[:page]).per(8)
     @posts = @user.posts.includes([:image_attachment, :genre]).order(created_at: :desc).page(params[:page]).per(6)
     @edit_posts = @user.posts.where.not(status: "有効").order(created_at: :desc).page(params[:page]).per(6)
     # ------------------DM機能------------------

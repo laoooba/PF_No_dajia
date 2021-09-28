@@ -32,12 +32,10 @@
               <p class="card-text">
                 <%= render 'public/relationships/follow-btn', user: @user %>
                 <%= render 'public/rooms/dm-btn', user: @user, isRoom: @isRoom, roomID: @roomID, room: @room, entry: @entry %>
-                <%= link_to "いいね一覧", favorites_user_path(user), class:"btn btn-lg btn-outline-info" %>
               </p>
               <% else %>
               <p class="card-text">
                 <%= link_to "編集", edit_user_path(user), class:"btn btn-lg btn-outline-primary" %>
-                <%= link_to "いいね一覧", favorites_user_path(user), class:"btn btn-lg btn-outline-info" %>
               </p>
               <% end %>
               <p class="card-text"></p>

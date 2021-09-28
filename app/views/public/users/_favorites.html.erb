@@ -1,8 +1,6 @@
-<%= render 'public/users/mypage', user: @user %>
-
 <div class="container-fluid">
   <div class="row">
-    <% @favorites.each do |favorite| %>
+    <% favorites.each do |favorite| %>
       <div class="col-md-3" style="float:left">
         <div class="card m-3 shadow-sm">
           <div class="bd-placeholder-img card-img-top">
@@ -24,7 +22,7 @@
         </div>
       </div>
     <% end %>
-    <%= paginate @favorites %>
+    <%= paginate favorites %>
   </div>
 </div>
 

@@ -1,5 +1,19 @@
 <%= render 'public/users/mypage', user: @user %>
-<%= render 'public/users/edit_post', edit_posts: @edit_posts %>
-<%= render 'public/users/post', posts: @posts %>
-
-
+  <div class="wrap">
+    <ul id="tab-menu">
+      <li><a href="#tab1" class="active">投稿</a></li>
+      <li><a href="#tab2" class="">編集待ち</a></li>
+      <li><a href="#tab3" class="">いいね</a></li>
+    </ul>
+    <div id="tab-contents">
+      <div id="tab1" class="tab">
+        <p><%= render 'public/users/post', posts: @posts %></p>
+      </div>
+      <div id="tab2" class="tab">
+        <p><%= render 'public/users/edit_post', edit_posts: @edit_posts %></p>
+      </div>
+      <div id="tab3" class="tab">
+        <p><%= render 'public/users/favorites', favorites: @favorites %></p>
+      </div>
+    </div>
+  </div>
