@@ -1,24 +1,42 @@
-# README
+# だげほー
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+台湾留学している人と今から台湾留学を考えている人を繋ぐコミュニケーションツールです。台湾学生のリアルな声を自分たちで共有し合うことを目的としています。より良い台湾学生生活を送れるように学校情報や勉強の仕方、生活情報などユーザー同士で共有し、留学を考えている人は直接話を聞いてみたい人にDMを送れたり記事を書いてユーザーに意見を求められます。企業の方も就活情報を載せることができお互いに直接コミュニケーションを取れ、企業PRにも活用できます
 
-Things you may want to cover:
+### サイトテーマ
+台湾にいる日本の学生に対する情報共有を目的としたWEBアプリケーション
 
-* Ruby version
+### テーマを選んだ理由
+自分自身台湾留学を経験し、そのときに感じた不便さを少しでも解決したく今回のテーマで開発させていただきました。下記は私が感じたり、調べた主な課題と留学仲間の意見です。
+・情報の見つけにくさ、偏り
+　台湾に行く前にネットなどで情報を探しますが少なく、学校を後から転校する同級生も多くいました。その際に『実際に留学している人に話を聞きたかった』と言う方が多く私もその一人でした。その後、留学生活の中でイベントやアルバイト情報はフェイスブックや知り合いからの紹介が多く学校によって情報量に偏りを感じました。
 
-* System dependencies
+・直接先輩の意見を聞きたい
+　後輩はもちろん今から台湾留学を考えている人が『先輩の話を聞きたい』と言う意見が多くありました。特に今から留学を考えている人たちにとってネットの情報だけでは不安と言っており聞きたいけど知り合いが近くにいなかったなどの意見もありました。ここでの交流を通して、これからの台湾留学に向けての準備や学科選び、より良い学校生活を送れたらと考えております。
 
-* Configuration
+　大学生活はあっという間です。色々なことにチャレンジしてコミュニティーを広げより良い台湾生活を送って欲しいと思っています。辛いこと・楽しいこと・チャレンジしたいこといろんなことを共有して皆さんで台湾留学を盛り上げて欲しいと思い開発しました。
 
-* Database creation
+### ターゲットユーザ
+台湾で留学している人、考えている人、情報を発信したい企業
 
-* Database initialization
+### 主な利用シーン
+台湾のリアルな情報を知りたい、共有したいとき
 
-* How to run the test suite
+## 設計書
+テーブル定義書は<a href="https://docs.google.com/spreadsheets/d/105wjydonBriICGMTxbHyqbH22r6UJp6_7d4sETbTyRI/edit?usp=sharing">こちら</a><br>
+UIflowとER図は<a href="https://drive.google.com/file/d/18l8QGOw0PqkGRPqusUPhA7Zp4Hu1jgP7/view?usp=sharing">こちら</a><br>
+アプリケーション定義書は<a href="https://docs.google.com/spreadsheets/d/1kVEwBTgZISuSpTlp-HYVzmWd3WJOW3eG5UgAHaPnAFQ/edit?usp=sharing">こちら</a><br>
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/17954ZzRz-drWM1fLbfBWu4464Qd0XfevOzSSyx5DTy0/edit?usp=sharing
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
