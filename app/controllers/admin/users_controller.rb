@@ -12,9 +12,8 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_users_path, notice: "編集しました"
+      redirect_to admin_users_path
     else
-      flash.now[:alert] = '編集に失敗しました'
       render :edit
     end
   end

@@ -45,7 +45,8 @@
         <tbody>
           <tr>
             <td><%= f.submit "お問い合わせを送信する", class: "btn btn-lg btn-outline-primary" %></td>
-            <%= form_with model: @contact, url: back_path, method: :post ,local:true do |f| %>
+            <% end %>
+            <%= form_with model: @contact, url: back_contacts_path, method: :post ,local:true do |f| %>
             <%= f.hidden_field :name, value: @contact.name %>
             <%= f.hidden_field :email, value: @contact.email %>
             <%= f.hidden_field :title, value: @contact.title %>
@@ -54,7 +55,6 @@
           </tr>
         </tbody>
       </table>
-      <% end %>
       <% end %>
     </div>
   </div>

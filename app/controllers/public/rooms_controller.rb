@@ -11,6 +11,7 @@ class Public::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @room.check_messages_notification(current_user)
+    # -------------DM------------------------
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @messages = @room.messages.includes([:user])
       @message = Message.new
@@ -18,6 +19,7 @@ class Public::RoomsController < ApplicationController
     else
       redirect_back(fallback_location: root_path)
     end
+    # -------------DM------------------------
   end
 
   private

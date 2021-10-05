@@ -12,11 +12,14 @@ class Post < ApplicationRecord
   belongs_to :genre
   has_many :comments, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
+  #---------- アソシエーション---------
+  
+  #---------- タグ---------
   has_many :tags, through: :tag_maps, source: :tag
-
   def post_tags
     tags.map { |tag| tag.title }
   end
+  #---------- タグ---------
 
   #---------- いいね---------
   has_many :favorites, dependent: :destroy
@@ -27,7 +30,8 @@ class Post < ApplicationRecord
 
   #----------通知機能---------
   has_many :notifications, dependent: :destroy
-
+  
+  #---------- いいね通知---------
   def create_notification_favorite(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ?", current_user.id, user_id, id, 'favorite'])
 
@@ -39,7 +43,9 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  #---------- いいね通知---------
 
+  #---------- コメント通知---------
   def create_notification_comment(current_user, comment_id)
     temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
@@ -47,7 +53,9 @@ class Post < ApplicationRecord
     end
     save_notification_comment(current_user, comment_id, user_id) if temp_ids.blank?
   end
+  #---------- コメント通知---------
 
+  #---------- フォロー通知---------
   def save_notification_comment(current_user, comment_id, visited_id)
     notification = current_user.notifications.new(post_id: id, comment_id: comment_id, visited_id: visited_id, action: 'comment')
     if notification.visitor_id == notification.visited_id
@@ -55,6 +63,6 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+  #---------- フォロー通知---------
   #----------通知機能---------
-  #---------- アソシエーション---------
 end
