@@ -20,7 +20,7 @@ class Public::ContactsController < ApplicationController
     if @contact.save
       ContactMailer.send_admin_mail(@contact).deliver_now
       ContactMailer.send_user_mail(@contact).deliver_now
-      redirect_to done_path
+      redirect_to  done_contacts_path
     else
       render :new
     end

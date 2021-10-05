@@ -51,14 +51,12 @@ class Public::PostsController < ApplicationController
     if @post.status == "編集待ち"
       @post.status = "結果待ち"
       if @post.update(post_params)
-        flash[:notice] = "だげほー"
         redirect_to post_path(@post)
       else
         render :edit
       end
     else
       if @post.update(post_params)
-        flash[:notice] = "だげほー"
         redirect_to post_path(@post)
       else
         @genres = Genre.all

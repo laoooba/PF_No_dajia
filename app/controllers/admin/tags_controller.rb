@@ -9,11 +9,10 @@ class Admin::TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_to admin_tags_path, notice: "ジャンルを追加しました"
+      redirect_to admin_tags_path
     else
       @tag = Tag.new
       @tags = Tag.all
-      flash.now[:alert] = "ジャンルの追加に失敗しました"
       render :index
     end
   end
@@ -25,9 +24,8 @@ class Admin::TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      redirect_to admin_tags_path, notice: "変更を保存しました"
+      redirect_to admin_tags_path
     else
-      flash.now[:alert] = "変更の保存に失敗しました"
       render :edit
     end
   end
