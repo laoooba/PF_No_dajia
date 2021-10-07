@@ -40,5 +40,9 @@ RSpec.describe Post, type: :model do
       post.valid?
       expect(post.errors[:tag_ids]).to include("を入力してください")
   end
-  
+  it "returns a user's  title as a too short" do
+    post = Post.new(title: "aaaaaaaaaabbbbbbbbbbccccccccccd")
+      post.valid?
+      expect(post.errors[:title]).to include("は30文字以内で入力してください")
+  end
 end
