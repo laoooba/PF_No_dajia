@@ -33,6 +33,7 @@ ja:
         status_content: お問い合わせ
         status: ステータス
         tag_ids: タグ
+        genre_id: ジャンル
         genre: ジャンル
         created_at: 会員登録日時
         updated_at: 会員更新日時
