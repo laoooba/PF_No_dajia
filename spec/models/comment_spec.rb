@@ -33,6 +33,6 @@ RSpec.describe Comment, type: :model do
   it "is invalid without a comment" do
     comment = Comment.new(comment: nil)
       comment.valid?
-      expect(comment.errors[:comment]).toinclude("を入力してください")
+      expect(comment.errors[:comment]).to include("を入力してください")
     end
 end
