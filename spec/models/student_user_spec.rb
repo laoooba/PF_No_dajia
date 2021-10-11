@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe StudentUser, type: :model do
   it "is valid with a school_name,and major" do
-    user = User.new(
-      name: "test",
-      email: "test@test.com",
-      password: "testtest",
-      description: "test",
-      )
+    user = FactoryBot.build(:user)
     user.build_student_user(
       school_name: "test",
       major: "test",
@@ -15,13 +10,13 @@ RSpec.describe StudentUser, type: :model do
       expect(user).to be_valid
   end
   it "is invalid without a school_name" do
-    user = StudentUser.new(school_name: nil)
+    user = FactoryBot.build(:student_user, school_name: nil)
       user.valid?
       expect(user.errors[:school_name]).to include("を入力してください")
-  end 
+  end
   it "is invalid without a major" do
-    user = StudentUser.new(major: nil)
+    user = FactoryBot.build(:student_user, major: nil)
       user.valid?
       expect(user.errors[:major]).to include("を入力してください")
-  end 
+  end
 end
